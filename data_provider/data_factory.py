@@ -1,5 +1,7 @@
 from data_provider.data_loader import Dataset_ETT_hour, Dataset_ETT_minute, Dataset_Custom, Dataset_Pred
 from torch.utils.data import DataLoader
+from logger_config import get_logger
+log = get_logger()
 
 data_dict = {
     'ETTh1': Dataset_ETT_hour,
@@ -41,7 +43,7 @@ def data_provider(args, flag):
         timeenc=timeenc,
         freq=freq
     )
-    print(flag, len(data_set))
+    log.info(f'{flag}, {len(data_set)}')
     data_loader = DataLoader(
         data_set,
         batch_size=batch_size,
