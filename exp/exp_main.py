@@ -115,6 +115,7 @@ class Exp_Main(Exp_Basic):
 
         time_now = time.time()
 
+        # train_steps每个epoch的迭代次数，train_samples/batch_size
         train_steps = len(train_loader)
         early_stopping = EarlyStopping(patience=self.args.patience, verbose=True)
 
@@ -124,6 +125,7 @@ class Exp_Main(Exp_Basic):
         if self.args.use_amp:
             scaler = torch.cuda.amp.GradScaler()
 
+        # 动态调整学习率
         scheduler = lr_scheduler.OneCycleLR(optimizer=model_optim,
                                             steps_per_epoch=train_steps,
                                             pct_start=self.args.pct_start,

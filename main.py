@@ -34,7 +34,7 @@ if __name__ == '__main__':
     config.use_gpu = True if torch.cuda.is_available() and config.use_gpu else False
 
     if config.use_gpu and config.use_multi_gpu:
-        config.dvices = config.devices.replace(' ', '')
+        config.devices = config.devices.replace(' ', '')
         device_ids = config.devices.split(',')
         config.device_ids = [int(id_) for id_ in device_ids]
         config.gpu = config.device_ids[0]

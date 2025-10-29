@@ -31,7 +31,7 @@ class PDF_backbone(nn.Module):
         super().__init__()
 
         self.revin_layer = RevIN(c_in, affine=affine, subtract_last=subtract_last)
-        self.period_list = period
+        self.period_list = period   # [24, 180, 720]
         self.period_len = [math.ceil(context_window / i) for i in self.period_list]
         self.kernel_list = [(n, patch_len[i]) for i, n in enumerate(self.period_len)]
         self.stride_list = [(n , m // 2 if stride is None else stride[i]) for i, (n, m) in enumerate(self.kernel_list)]

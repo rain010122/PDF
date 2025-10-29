@@ -59,7 +59,7 @@ PARAM_DEFAULTS = {
     'model_params_output_attention': False,
     'model_params_do_predict': False,
     # ---------- train_params ----------
-    'train_params_num_workers': 10,
+    'train_params_num_workers': 0,   # 开发为主进程加载
     'train_params_itr': 2,
     'train_params_train_epochs': 100,
     'train_params_batch_size': 16,

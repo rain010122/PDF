@@ -39,13 +39,13 @@ def adjust_learning_rate(optimizer, scheduler, epoch, args, printout=True):
 
 class EarlyStopping:
     def __init__(self, patience=7, verbose=False, delta=0):
-        self.patience = patience
-        self.verbose = verbose
-        self.counter = 0
-        self.best_score = None
-        self.early_stop = False
-        self.val_loss_min = np.Inf
-        self.delta = delta
+        self.patience = patience      # 容忍验证损失不下降的epoch数，超出就停止训练
+        self.verbose = verbose        # 是否打印日志
+        self.counter = 0              # 记录连续没有进步的epoch数
+        self.best_score = None        # 历史上最好的分数（负的val_loss）
+        self.early_stop = False       # 是否满足早停条件
+        self.val_loss_min = np.inf    # 验证损失最小值
+        self.delta = delta            # 最小提升（小于delta认为没改善）
 
     def __call__(self, val_loss, model, path):
         score = -val_loss
