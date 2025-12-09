@@ -13,6 +13,53 @@ from einops import rearrange
 from layers.PDF_layers import *
 from layers.RevIN import RevIN
 
+# ================================================================
+# [新增模块] MoE 门控网络 (Router)
+# ================================================================
+class MoE_Router(nn.Module):
+    def __init__(self, context_window, dropout=0.1):
+        super().__init__()
+        # 输入维度解析：
+        # 我们会将短期特征(长度 context_window) 和 长期特征(长度 context_window) 拼接
+        # 所以输入维度是 context_window * 2
+        
+        self.gate = nn.Sequential(
+            # 第一层：特征压缩与融合
+            # 将拼接后的长序列映射到隐层空间 (context_window // 2)
+            nn.Linear(context_window * 2, context_window // 2),
+            
+            # 激活函数：引入非线性，增强拟合能力
+            nn.LeakyReLU(0.2),
+            
+            # Dropout：防止过拟合，增加鲁棒性
+            nn.Dropout(dropout),
+            
+            # 第二层：输出决策权重
+            # 输出维度为 2，分别对应 [w_short, w_long]
+            nn.Linear(context_window // 2, 2), 
+            
+            # Softmax：核心步骤
+            # 保证 w_short + w_long = 1，且两者都在 [0, 1] 之间
+            # 这符合“加权平均”的数学定义
+            nn.Softmax(dim=-1)
+        )
+
+    def forward(self, loc, glo):
+        """
+        参数说明:
+        loc: 短期分支输出 (Local/Convolution), 形状 [Batch, nvars, context_window]
+        glo: 长期分支输出 (Global/Transformer), 形状 [Batch, nvars, context_window]
+        """
+        # 1. 特征拼接
+        # 在最后一个维度(时间维)拼接，让Router能同时看到两者的完整信息
+        combined = torch.cat([loc, glo], dim=-1) # 形状变更为 [Batch, nvars, context_window * 2]
+        
+        # 2. 计算权重
+        # 通过 MLP 网络计算出该样本、该变量对应的长短期权重
+        weights = self.gate(combined) # 输出形状 [Batch, nvars, 2]
+        
+        return weights
+    
 # Cell
 class PDF_backbone(nn.Module):
     def __init__(self, c_in: int, context_window: int, target_window: int,
@@ -77,8 +124,14 @@ class PDF_backbone(nn.Module):
                 nn.Dropout(fc_dropout),
                 nn.Flatten(start_dim=-2),
             ) for n in self.period_len])
-
-        self.head = Head(context_window, len(period), target_window, head_dropout=head_dropout, Concat=not add)
+        
+        # ================= [新增] 初始化 MoE Routers =================
+        # 只有在双分支并行模式下才需要 Router
+        if not self.wo_conv and not self.serial_conv:
+            self.moe_routers = nn.ModuleList([
+                MoE_Router(context_window, dropout=dropout) for _ in self.period_list
+            ])
+        # ===========================================================
 
     def forward(self, z):  # z: [bs x nvars x seq_len]
         # norm
@@ -88,6 +141,7 @@ class PDF_backbone(nn.Module):
 
         res = []
         if self.wo_conv:
+            # 仅使用 Transformer (无短期卷积)
             for i, period in enumerate(self.period_list):
                 glo = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
                 glo = self.pad_layer[i][1](glo)
@@ -96,6 +150,7 @@ class PDF_backbone(nn.Module):
                 glo = self.backbone[i](glo)
                 res.append(glo)
         elif self.serial_conv:
+            # 串行模式 (先卷积再 Transformer)
             for i, period in enumerate(self.period_list):
                 loc = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
                 loc = self.conv[i](loc).reshape(z.shape[0], z.shape[1], -1)[..., :z.shape[-1]]
@@ -106,15 +161,50 @@ class PDF_backbone(nn.Module):
                 glo = self.backbone[i](glo)
                 res.append(glo)
         else:
+            # ================= [修改] 并行双分支 + MoE 动态融合 =================
+            # 遍历每一个周期分支 (例如 i=0 对应周期24)
             for i, period in enumerate(self.period_list):
-                glo = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
-                loc = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
-                loc = self.conv[i](loc).reshape(z.shape[0], z.shape[1], -1)[..., :z.shape[-1]]
-                glo = self.pad_layer[i][1](glo)
-                glo = self.embedding[i](glo.unsqueeze(-3))
-                glo = rearrange(glo, "(b m) d n -> b m d n", b=z.shape[0]).contiguous()
-                glo = self.backbone[i](glo)
-                res.append(glo + loc)
+                
+                # ---------------- 原有逻辑保持不变 ----------------
+                # 1. 数据准备：Padding 并 Reshape
+                z_padded = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
+                
+                # 2. 运行短期专家 (Expert_Short)
+                # loc_in 是输入，经过 self.conv[i] 得到 loc (局部特征)
+                loc_in = z_padded
+                loc = self.conv[i](loc_in).reshape(z.shape[0], z.shape[1], -1)[..., :z.shape[-1]]
+                
+                # 3. 运行长期专家 (Expert_Long)
+                # glo_embed 是输入，经过 self.backbone[i] 得到 glo (全局特征)
+                glo_padded = self.pad_layer[i][1](z_padded)
+                glo_embed = self.embedding[i](glo_padded.unsqueeze(-3))
+                glo_embed = rearrange(glo_embed, "(b m) d n -> b m d n", b=z.shape[0]).contiguous()
+                glo = self.backbone[i](glo_embed)
+                
+                # ---------------- 新增 MoE 融合逻辑 ----------------
+                
+                # 4. 调用 Router 计算权重
+                # 输入: 短期结果 loc, 长期结果 glo
+                # 输出: weights [Batch, nvars, 2]
+                weights = self.moe_routers[i](loc, glo) 
+                
+                # 5. 权重拆分与维度对齐
+                # weights[..., 0] 取出所有样本、所有变量的第0个权重(短期权重 w_s)
+                # .unsqueeze(-1) 将形状从 [Batch, nvars] 变为 [Batch, nvars, 1]
+                # 这样做是为了利用广播机制(Broadcasting)与 loc [Batch, nvars, time] 进行相乘
+                w_loc = weights[..., 0].unsqueeze(-1) 
+                
+                # 同理取出长期权重 w_l
+                w_glo = weights[..., 1].unsqueeze(-1) 
+                
+                # 6. 加权求和 (Weighted Sum)
+                # 原代码: res.append(loc + glo)  <-- 也就是 w_loc=1, w_glo=1 (硬相加)
+                # 新代码: 实现了公式 Y = w_s * E_s(x) + w_l * E_l(x)
+                fused_out = w_loc * loc + w_glo * glo
+                
+                # 将融合后的结果存入结果列表
+                res.append(fused_out)
+            # ===================================================================
 
         # denorm
         z = self.head(res)
@@ -122,6 +212,48 @@ class PDF_backbone(nn.Module):
         z = self.revin_layer(z, 'denorm')
         z = z.permute(0, 2, 1)
         return z
+    # def forward(self, z):  # z: [bs x nvars x seq_len]
+    #     # norm
+    #     z = z.permute(0, 2, 1)
+    #     z = self.revin_layer(z, 'norm')
+    #     z = z.permute(0, 2, 1)
+
+    #     res = []
+    #     if self.wo_conv:
+    #         for i, period in enumerate(self.period_list):
+    #             glo = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
+    #             glo = self.pad_layer[i][1](glo)
+    #             glo = self.embedding[i](glo.unsqueeze(-3))
+    #             glo = rearrange(glo, "(b m) d n -> b m d n", b=z.shape[0]).contiguous()
+    #             glo = self.backbone[i](glo)
+    #             res.append(glo)
+    #     elif self.serial_conv:
+    #         for i, period in enumerate(self.period_list):
+    #             loc = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
+    #             loc = self.conv[i](loc).reshape(z.shape[0], z.shape[1], -1)[..., :z.shape[-1]]
+    #             glo = self.pad_layer[i][0](loc).reshape(z.shape[0] * z.shape[1], -1, period)
+    #             glo = self.pad_layer[i][1](glo)
+    #             glo = self.embedding[i](glo.unsqueeze(-3))
+    #             glo = rearrange(glo, "(b m) d n -> b m d n", b=z.shape[0]).contiguous()
+    #             glo = self.backbone[i](glo)
+    #             res.append(glo)
+    #     else:
+    #         for i, period in enumerate(self.period_list):
+    #             glo = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
+    #             loc = self.pad_layer[i][0](z).reshape(z.shape[0] * z.shape[1], -1, period)
+    #             loc = self.conv[i](loc).reshape(z.shape[0], z.shape[1], -1)[..., :z.shape[-1]]
+    #             glo = self.pad_layer[i][1](glo)
+    #             glo = self.embedding[i](glo.unsqueeze(-3))
+    #             glo = rearrange(glo, "(b m) d n -> b m d n", b=z.shape[0]).contiguous()
+    #             glo = self.backbone[i](glo)
+    #             res.append(glo + loc)
+
+    #     # denorm
+    #     z = self.head(res)
+    #     z = z.permute(0, 2, 1)
+    #     z = self.revin_layer(z, 'denorm')
+    #     z = z.permute(0, 2, 1)
+    #     return z
 
 class Head(nn.Module):
     def __init__(self, context_window, num_period, target_window, head_dropout=0,

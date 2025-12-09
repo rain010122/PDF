@@ -1,6 +1,8 @@
 import os
 import torch
 import numpy as np
+from logger_config import get_logger
+log = get_logger()
 
 
 class Exp_Basic(object):
@@ -18,10 +20,10 @@ class Exp_Basic(object):
             os.environ["CUDA_VISIBLE_DEVICES"] = str(
                 self.args.gpu) if not self.args.use_multi_gpu else self.args.devices
             device = torch.device('cuda:{}'.format(self.args.gpu))
-            print('Use GPU: cuda:{}'.format(self.args.gpu))
+            log.info('Use GPU: cuda:{}'.format(self.args.gpu))
         else:
             device = torch.device('cpu')
-            print('Use CPU')
+            log.info('Use CPU')
         return device
 
     def _get_data(self):

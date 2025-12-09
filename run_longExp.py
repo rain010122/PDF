@@ -6,6 +6,8 @@ import torch
 from exp.exp_main import Exp_Main
 import random
 import numpy as np
+from config import Config
+from logger_config import LoggerConfig, get_logger
 
 parser = argparse.ArgumentParser(description='Autoformer & Transformer family for Time Series Forecasting')
 
@@ -88,7 +90,7 @@ parser.add_argument('--output_attention', action='store_true', help='whether to 
 parser.add_argument('--do_predict', action='store_true', help='whether to predict unseen future data')
 
 # optimization
-parser.add_argument('--num_workers', type=int, default=10, help='data loader num workers')
+parser.add_argument('--num_workers', type=int, default=0, help='data loader num workers')
 parser.add_argument('--itr', type=int, default=2, help='experiments times')
 parser.add_argument('--train_epochs', type=int, default=100, help='train epochs')
 parser.add_argument('--batch_size', type=int, default=16, help='batch size of train input data')
@@ -104,7 +106,7 @@ parser.add_argument('--use_amp', action='store_true', help='use automatic mixed 
 parser.add_argument('--use_gpu', type=bool, default=True, help='use gpu')
 parser.add_argument('--gpu', type=int, default=0, help='gpu')
 parser.add_argument('--use_multi_gpu', action='store_true', help='use multiple gpus', default=False)
-parser.add_argument('--devices', type=str, default='0,1,2,3', help='device ids of multile gpus')
+parser.add_argument('--devices', type=str, default='0,1,2,3,4,5,6,7', help='device ids of multile gpus')
 parser.add_argument('--test_flop', action='store_true', default=False, help='See utils/tools for usage')
 
 # output log file
@@ -112,6 +114,12 @@ parser.add_argument('--log', type=str, default='./logs/LongForecasting/PatchTST_
                     help='path of output log file')
 
 args = parser.parse_args()
+
+log_path = f"./logs/LongForecasting/{args.model_id}_{args.model}.log"
+# log_path = "../data/logs/log.log"
+logger_config = LoggerConfig(log_path)
+log = get_logger()
+log.info("=" * 50)
 
 # output
 # sys.stdout = open(args.log, 'w')
@@ -130,8 +138,9 @@ if args.use_gpu and args.use_multi_gpu:
     args.device_ids = [int(id_) for id_ in device_ids]
     args.gpu = args.device_ids[0]
 
-print('Args in experiment:')
-print(args)
+log.info('Args in experiment:')
+for k, v in vars(args).items():
+    log.info(f'{k}: {v}')
 
 Exp = Exp_Main
 
@@ -157,14 +166,14 @@ if args.is_training:
             args.des, ii)
 
         exp = Exp(args)  # set experiments
-        print('>>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>'.format(setting))
+        log.info('>>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>'.format(setting))
         exp.train(setting)
 
-        print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
+        log.info('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
         exp.test(setting)
 
         if args.do_predict:
-            print('>>>>>>>predicting : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
+            log.info('>>>>>>>predicting : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
             exp.predict(setting, True)
 
         torch.cuda.empty_cache()
@@ -188,6 +197,6 @@ else:
                                                                                                   args.des, ii)
 
     exp = Exp(args)  # set experiments
-    print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
+    log.info('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
     exp.test(setting, test=1)
     torch.cuda.empty_cache()

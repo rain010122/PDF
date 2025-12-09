@@ -7,7 +7,7 @@ if [ ! -d "./logs/LongForecasting" ]; then
 fi
 
 model_name=PDF
-root_path_name=./dataset/
+root_path_name=../data/dataset/
 data_path_name=ETTh2.csv
 model_id_name=ETTh2
 data_name=ETTh2
@@ -15,12 +15,12 @@ random_seed=2021
 seq_len=720
 
 # for pred_len in 96 192 336 720
-for pred_len in 96
+for pred_len in 96 192 336 720
 do
   python -u run_longExp.py \
   --random_seed 2021 \
   --is_training 1 \
-  --root_path ./dataset/ \
+  --root_path ../data/dataset/ \
   --data_path ETTh2.csv \
   --model_id ETTh2'_'$seq_len'_'$pred_len \
   --model PDF \
@@ -42,5 +42,6 @@ do
   --des Exp \
   --train_epochs 100 \
   --patience 10 \
-  --itr 1 --batch_size 128 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+  --itr 1 --batch_size 128 --learning_rate 0.0001
 done
+  # --itr 1 --batch_size 128 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
