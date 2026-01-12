@@ -2,7 +2,7 @@ import math
 
 from data_provider.data_factory import data_provider
 from exp.exp_basic import Exp_Basic
-from models import PDF, PatchTST, Informer, Autoformer, Transformer, DLinear, Linear, NLinear
+from models import PDF, PatchTST, Informer, Autoformer, Transformer, DLinear, Linear, NLinear, ADF
 from utils.tools import EarlyStopping, adjust_learning_rate, visual, test_params_flop
 from utils.metrics import metric
 
@@ -38,7 +38,8 @@ class Exp_Main(Exp_Basic):
             'NLinear': NLinear,
             'Linear': Linear,
             'PatchTST': PatchTST,
-            'PDF': PDF
+            'PDF': PDF,
+            'ADF': ADF
         }
         model = model_dict[self.args.model].Model(self.args).float()
 
@@ -75,7 +76,7 @@ class Exp_Main(Exp_Basic):
                 # global_encoder - decoder
                 if self.args.use_amp:
                     with torch.cuda.amp.autocast():
-                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                             outputs = self.model(batch_x)
                         else:
                             if self.args.output_attention:
@@ -83,7 +84,7 @@ class Exp_Main(Exp_Basic):
                             else:
                                 outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                 else:
-                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                         outputs = self.model(batch_x)
                     else:
                         if self.args.output_attention:
@@ -154,7 +155,7 @@ class Exp_Main(Exp_Basic):
                 # global_encoder - decoder
                 if self.args.use_amp:
                     with torch.cuda.amp.autocast():
-                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                             outputs = self.model(batch_x)
                         else:
                             if self.args.output_attention:
@@ -168,7 +169,7 @@ class Exp_Main(Exp_Basic):
                         loss = criterion(outputs, batch_y)
                         train_loss.append(loss.item())
                 else:
-                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                         outputs = self.model(batch_x)
                     else:
                         if self.args.output_attention:
@@ -239,6 +240,19 @@ class Exp_Main(Exp_Basic):
             os.makedirs(folder_path)
 
         self.model.eval()
+        
+        # ================= [新增 1] 初始化权重存储容器与开关 =================
+        # 结构: { 周期索引_0: [batch1_w, batch2_w...], 周期索引_1: [...] }
+        moe_weights_results = {}
+        
+        # 尝试开启 backbone 的保存开关
+        # 注意: self.model 是 PDF.py 中的 Model 类
+        # self.model.model 才是 PDF_backbone.py 中的 PDF_backbone 类
+        if hasattr(self.model, 'model') and hasattr(self.model.model, 'save_moe_weights'):
+            self.model.model.save_moe_weights = True
+            log.info("MoE Weight Saving: Enabled")
+        # ==================================================================
+
         with torch.no_grad():
             for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(test_loader):
                 batch_x = batch_x.float().to(self.device)
@@ -253,7 +267,7 @@ class Exp_Main(Exp_Basic):
                 # global_encoder - decoder
                 if self.args.use_amp:
                     with torch.cuda.amp.autocast():
-                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                             outputs = self.model(batch_x, batch_x_mark, batch_y_mark[:, -self.args.pred_len:, :])
                         else:
                             if self.args.output_attention:
@@ -261,7 +275,7 @@ class Exp_Main(Exp_Basic):
                             else:
                                 outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                 else:
-                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                         outputs = self.model(batch_x)
                     else:
                         if self.args.output_attention:
@@ -269,6 +283,18 @@ class Exp_Main(Exp_Basic):
 
                         else:
                             outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
+
+                # ================= [新增 2] 从 Buffer 中取出权重并收集 =================
+                # 确保模型是我们修改过的 ADF/PDF 模型，且 Buffer 不为空
+                if hasattr(self.model, 'model') and hasattr(self.model.model, 'moe_weight_buffer'):
+                    buffer = self.model.model.moe_weight_buffer
+                    # buffer 是一个字典 {period_idx: tensor}
+                    for period_idx, w_tensor in buffer.items():
+                        if period_idx not in moe_weights_results:
+                            moe_weights_results[period_idx] = []
+                        # w_tensor 已经在 backbone 里 .detach().cpu() 过了，直接 append
+                        moe_weights_results[period_idx].append(w_tensor)
+                # ==================================================================
 
                 f_dim = -1 if self.args.features == 'MS' else 0
                 # log.info(outputs.shape,batch_y.shape)
@@ -292,6 +318,11 @@ class Exp_Main(Exp_Basic):
                     gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
                     pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
                     visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
+
+        # ================= [新增 3] 关闭开关 (恢复默认状态) =================
+        if hasattr(self.model, 'model') and hasattr(self.model.model, 'save_moe_weights'):
+            self.model.model.save_moe_weights = False
+        # ==================================================================
 
         if self.args.test_flop:
             test_params_flop((batch_x.shape[1], batch_x.shape[2]))
@@ -320,7 +351,22 @@ class Exp_Main(Exp_Basic):
 
         # np.save(folder_path + 'metrics.npy', np.array([mae, mse, rmse, mape, mspe,rse, corr]))
         np.save(folder_path + 'pred.npy', preds)
-        # np.save(folder_path + 'true.npy', trues)
+
+        # ================= [新增 4] 保存 MoE 权重文件 =================
+        # 只有收集到了权重才保存
+        if len(moe_weights_results) > 0:
+            for period_idx, w_list in moe_weights_results.items():
+                # w_list 是多个batch的列表，cat起来变成一个大数组
+                # 形状通常是 [Total_Samples, nvars, 2]
+                weights_array = torch.cat(w_list, dim=0).numpy()
+                
+                # 保存为 .npy 文件
+                save_name = f'moe_weights_period_{period_idx}.npy'
+                np.save(os.path.join(folder_path, save_name), weights_array)
+                log.info(f'Saved MoE weights: {save_name}, shape: {weights_array.shape}')
+        # ==========================================================
+
+        np.save(folder_path + 'true.npy', trues)
         # np.save(folder_path + 'x.npy', inputx)
         return
 
@@ -349,7 +395,7 @@ class Exp_Main(Exp_Basic):
                 # global_encoder - decoder
                 if self.args.use_amp:
                     with torch.cuda.amp.autocast():
-                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                        if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                             outputs = self.model(batch_x)
                         else:
                             if self.args.output_attention:
@@ -357,7 +403,7 @@ class Exp_Main(Exp_Basic):
                             else:
                                 outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                 else:
-                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model:
+                    if 'Linear' in self.args.model or 'TST' in self.args.model or 'PDF' in self.args.model or 'ADF' in self.args.model:
                         outputs = self.model(batch_x)
                     else:
                         if self.args.output_attention:

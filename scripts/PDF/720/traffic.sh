@@ -23,7 +23,7 @@ do
       --is_training 1 \
       --root_path $root_path_name \
       --data_path $data_path_name \
-      --model_id $model_id_name_$seq_len'_'$pred_len \
+      --model_id $model_id_name'_'$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
       --features M \
@@ -41,12 +41,13 @@ do
       --patch_len 1\
       --stride 1\
       --des 'Exp'\
-      --train_epochs 100\
+      --train_epochs 30\
       --patience 10\
       --lradj 'TST'\
       --pct_start 0.2\
-      --use_multi_gpu --devices 0,1\
-      --itr 1 --batch_size 24 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+      --itr 1 --batch_size 24 --learning_rate 0.0003 
+      # --use_multi_gpu --devices 0,1\
+      # >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done
 
 for pred_len in 336 720
@@ -57,7 +58,7 @@ do
       --is_training 1 \
       --root_path $root_path_name \
       --data_path $data_path_name \
-      --model_id $model_id_name_$seq_len'_'$pred_len \
+      --model_id $model_id_name'_'$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
       --features M \
@@ -75,10 +76,11 @@ do
       --patch_len 1\
       --stride 1\
       --des 'Exp'\
-      --train_epochs 100\
+      --train_epochs 30\
       --patience 10\
       --lradj 'TST'\
       --pct_start 0.2\
-      --use_multi_gpu --devices 0,1\
-      --itr 1 --batch_size 24 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+      --itr 1 --batch_size 24 --learning_rate 0.0003 
+    # --use_multi_gpu --devices 0,1\
+      # >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done

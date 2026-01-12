@@ -15,13 +15,13 @@ data_name=ETTm2
 random_seed=2021
 for pred_len in 96 192 336 720
 do
-    CUDA_VISIBLE_DEVICES=3\
+    # CUDA_VISIBLE_DEVICES=3\
     python -u run_longExp.py \
       --random_seed $random_seed \
       --is_training 1 \
       --root_path $root_path_name \
       --data_path $data_path_name \
-      --model_id $model_id_name_$seq_len'_'$pred_len \
+      --model_id $model_id_name'_'$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
       --features M \
@@ -39,8 +39,9 @@ do
       --patch_len 16 24\
       --stride 16 24\
       --des 'Exp' \
-      --train_epochs 100 \
-      --patience 10 \
+      --train_epochs 15 \
+      --patience 5 \
       --lradj 'TST' \
-      --itr 1 --batch_size 128 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+      --itr 1 --batch_size 128 --learning_rate 0.0001 
+    #   >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done

@@ -1,0 +1,195 @@
+[INFO] 2025-12-11 23:01:13,597 ==================================================
+[INFO] 2025-12-11 23:01:13,615 Args in experiment:
+[INFO] 2025-12-11 23:01:13,615 random_seed: 2021
+[INFO] 2025-12-11 23:01:13,616 is_training: 1
+[INFO] 2025-12-11 23:01:13,616 model_id: ETTh2_336_720
+[INFO] 2025-12-11 23:01:13,616 model: PatchTST
+[INFO] 2025-12-11 23:01:13,616 data: ETTh2
+[INFO] 2025-12-11 23:01:13,617 root_path: ./dataset/
+[INFO] 2025-12-11 23:01:13,617 data_path: ETTh2.csv
+[INFO] 2025-12-11 23:01:13,618 features: M
+[INFO] 2025-12-11 23:01:13,618 target: OT
+[INFO] 2025-12-11 23:01:13,618 freq: h
+[INFO] 2025-12-11 23:01:13,618 checkpoints: ./checkpoints/
+[INFO] 2025-12-11 23:01:13,618 seq_len: 336
+[INFO] 2025-12-11 23:01:13,665 label_len: 48
+[INFO] 2025-12-11 23:01:13,665 pred_len: 720
+[INFO] 2025-12-11 23:01:13,665 fc_dropout: 0.0
+[INFO] 2025-12-11 23:01:13,665 head_dropout: 0.0
+[INFO] 2025-12-11 23:01:13,666 add: False
+[INFO] 2025-12-11 23:01:13,666 wo_conv: False
+[INFO] 2025-12-11 23:01:13,666 serial_conv: False
+[INFO] 2025-12-11 23:01:13,666 kernel_list: [3, 7, 9]
+[INFO] 2025-12-11 23:01:13,666 patch_len: [1, 6]
+[INFO] 2025-12-11 23:01:13,667 period: [24, 84]
+[INFO] 2025-12-11 23:01:13,667 stride: [1, 6]
+[INFO] 2025-12-11 23:01:13,667 padding_patch: end
+[INFO] 2025-12-11 23:01:13,667 revin: 1
+[INFO] 2025-12-11 23:01:13,667 affine: 0
+[INFO] 2025-12-11 23:01:13,668 subtract_last: 0
+[INFO] 2025-12-11 23:01:13,668 decomposition: 0
+[INFO] 2025-12-11 23:01:13,668 kernel_size: 25
+[INFO] 2025-12-11 23:01:13,668 individual: 0
+[INFO] 2025-12-11 23:01:13,668 embed_type: 0
+[INFO] 2025-12-11 23:01:13,669 enc_in: 7
+[INFO] 2025-12-11 23:01:13,669 dec_in: 7
+[INFO] 2025-12-11 23:01:13,669 c_out: 7
+[INFO] 2025-12-11 23:01:13,669 d_model: 16
+[INFO] 2025-12-11 23:01:13,669 n_heads: 4
+[INFO] 2025-12-11 23:01:13,669 e_layers: 3
+[INFO] 2025-12-11 23:01:13,670 d_layers: 1
+[INFO] 2025-12-11 23:01:13,670 d_ff: 128
+[INFO] 2025-12-11 23:01:13,670 moving_avg: 25
+[INFO] 2025-12-11 23:01:13,670 factor: 1
+[INFO] 2025-12-11 23:01:13,670 distil: True
+[INFO] 2025-12-11 23:01:13,670 dropout: 0.3
+[INFO] 2025-12-11 23:01:13,670 attn_dropout: 0.05
+[INFO] 2025-12-11 23:01:13,671 embed: timeF
+[INFO] 2025-12-11 23:01:13,671 activation: gelu
+[INFO] 2025-12-11 23:01:13,671 output_attention: False
+[INFO] 2025-12-11 23:01:13,671 do_predict: False
+[INFO] 2025-12-11 23:01:13,671 num_workers: 0
+[INFO] 2025-12-11 23:01:13,671 itr: 1
+[INFO] 2025-12-11 23:01:13,672 train_epochs: 100
+[INFO] 2025-12-11 23:01:13,672 batch_size: 128
+[INFO] 2025-12-11 23:01:13,672 patience: 10
+[INFO] 2025-12-11 23:01:13,672 learning_rate: 0.0001
+[INFO] 2025-12-11 23:01:13,672 des: Exp
+[INFO] 2025-12-11 23:01:13,673 loss: mse
+[INFO] 2025-12-11 23:01:13,673 lradj: type3
+[INFO] 2025-12-11 23:01:13,673 pct_start: 0.3
+[INFO] 2025-12-11 23:01:13,673 use_amp: False
+[INFO] 2025-12-11 23:01:13,673 use_gpu: True
+[INFO] 2025-12-11 23:01:13,674 gpu: 0
+[INFO] 2025-12-11 23:01:13,674 use_multi_gpu: False
+[INFO] 2025-12-11 23:01:13,674 devices: 0,1,2,3,4,5,6,7
+[INFO] 2025-12-11 23:01:13,674 test_flop: False
+[INFO] 2025-12-11 23:01:13,674 log: ./logs/LongForecasting/PatchTST_Electricity_336_96.log
+[INFO] 2025-12-11 23:01:13,674 Use GPU: cuda:0
+[INFO] 2025-12-12 02:08:22,866 ==================================================
+[INFO] 2025-12-12 02:08:22,890 Args in experiment:
+[INFO] 2025-12-12 02:08:22,890 random_seed: 2021
+[INFO] 2025-12-12 02:08:22,890 is_training: 1
+[INFO] 2025-12-12 02:08:22,890 model_id: ETTh2_336_720
+[INFO] 2025-12-12 02:08:22,891 model: PatchTST
+[INFO] 2025-12-12 02:08:22,891 data: ETTh2
+[INFO] 2025-12-12 02:08:22,891 root_path: ./dataset/
+[INFO] 2025-12-12 02:08:22,891 data_path: ETTh2.csv
+[INFO] 2025-12-12 02:08:22,891 features: M
+[INFO] 2025-12-12 02:08:22,891 target: OT
+[INFO] 2025-12-12 02:08:22,891 freq: h
+[INFO] 2025-12-12 02:08:22,891 checkpoints: ./checkpoints/
+[INFO] 2025-12-12 02:08:22,891 seq_len: 336
+[INFO] 2025-12-12 02:08:22,891 label_len: 48
+[INFO] 2025-12-12 02:08:22,891 pred_len: 720
+[INFO] 2025-12-12 02:08:22,892 fc_dropout: 0.0
+[INFO] 2025-12-12 02:08:22,892 head_dropout: 0.0
+[INFO] 2025-12-12 02:08:22,892 add: False
+[INFO] 2025-12-12 02:08:22,892 wo_conv: False
+[INFO] 2025-12-12 02:08:22,892 serial_conv: False
+[INFO] 2025-12-12 02:08:22,892 kernel_list: [3, 7, 9]
+[INFO] 2025-12-12 02:08:22,893 patch_len: 1
+[INFO] 2025-12-12 02:08:22,893 period: [24]
+[INFO] 2025-12-12 02:08:22,893 stride: 1
+[INFO] 2025-12-12 02:08:22,893 padding_patch: end
+[INFO] 2025-12-12 02:08:22,893 revin: 1
+[INFO] 2025-12-12 02:08:22,893 affine: 0
+[INFO] 2025-12-12 02:08:22,893 subtract_last: 0
+[INFO] 2025-12-12 02:08:22,894 decomposition: 0
+[INFO] 2025-12-12 02:08:22,894 kernel_size: 25
+[INFO] 2025-12-12 02:08:22,894 individual: 0
+[INFO] 2025-12-12 02:08:22,894 embed_type: 0
+[INFO] 2025-12-12 02:08:22,894 enc_in: 7
+[INFO] 2025-12-12 02:08:22,894 dec_in: 7
+[INFO] 2025-12-12 02:08:22,895 c_out: 7
+[INFO] 2025-12-12 02:08:22,895 d_model: 16
+[INFO] 2025-12-12 02:08:22,895 n_heads: 4
+[INFO] 2025-12-12 02:08:22,895 e_layers: 3
+[INFO] 2025-12-12 02:08:22,895 d_layers: 1
+[INFO] 2025-12-12 02:08:22,896 d_ff: 128
+[INFO] 2025-12-12 02:08:22,896 moving_avg: 25
+[INFO] 2025-12-12 02:08:22,896 factor: 1
+[INFO] 2025-12-12 02:08:22,896 distil: True
+[INFO] 2025-12-12 02:08:22,896 dropout: 0.3
+[INFO] 2025-12-12 02:08:22,896 attn_dropout: 0.05
+[INFO] 2025-12-12 02:08:22,897 embed: timeF
+[INFO] 2025-12-12 02:08:22,897 activation: gelu
+[INFO] 2025-12-12 02:08:22,897 output_attention: False
+[INFO] 2025-12-12 02:08:22,897 do_predict: False
+[INFO] 2025-12-12 02:08:22,897 num_workers: 0
+[INFO] 2025-12-12 02:08:22,897 itr: 1
+[INFO] 2025-12-12 02:08:22,898 train_epochs: 100
+[INFO] 2025-12-12 02:08:22,898 batch_size: 128
+[INFO] 2025-12-12 02:08:22,898 patience: 10
+[INFO] 2025-12-12 02:08:22,898 learning_rate: 0.0001
+[INFO] 2025-12-12 02:08:22,898 des: Exp
+[INFO] 2025-12-12 02:08:22,898 loss: mse
+[INFO] 2025-12-12 02:08:22,899 lradj: type3
+[INFO] 2025-12-12 02:08:22,899 pct_start: 0.3
+[INFO] 2025-12-12 02:08:22,899 use_amp: False
+[INFO] 2025-12-12 02:08:22,899 use_gpu: True
+[INFO] 2025-12-12 02:08:22,899 gpu: 0
+[INFO] 2025-12-12 02:08:22,899 use_multi_gpu: False
+[INFO] 2025-12-12 02:08:22,900 devices: 0,1,2,3,4,5,6,7
+[INFO] 2025-12-12 02:08:22,900 test_flop: False
+[INFO] 2025-12-12 02:08:22,900 log: ./logs/LongForecasting/PatchTST_Electricity_336_96.log
+[INFO] 2025-12-12 02:08:22,900 Use GPU: cuda:0
+[INFO] 2025-12-12 02:08:23,018 >>>>>>>start training : ETTh2_336_720_PatchTST_ETTh2_ftM_sl336_ll48_pl720_dm16_nh4_el3_dl1_df128_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] 2025-12-12 02:08:23,059 train, 7585
+[INFO] 2025-12-12 02:08:23,093 val, 2161
+[INFO] 2025-12-12 02:08:23,127 test, 2161
+[INFO] 2025-12-12 02:10:57,411 Epoch: 1 cost time: 153.60504627227783
+[INFO] 2025-12-12 02:11:12,587 Epoch: 1, Steps: 59 | Train Loss: 0.9696291 Vali Loss: 0.7185035 Test Loss: 0.4369088
+[INFO] 2025-12-12 02:11:12,588 Validation loss decreased (inf --> 0.718503).  Saving model ...
+[INFO] 2025-12-12 02:11:12,606 Updating learning rate to 0.0001
+[INFO] 2025-12-12 02:13:45,909 Epoch: 2 cost time: 153.3018045425415
+[INFO] 2025-12-12 02:14:00,916 Epoch: 2, Steps: 59 | Train Loss: 0.8813913 Vali Loss: 0.6242328 Test Loss: 0.3982989
+[INFO] 2025-12-12 02:14:00,916 Validation loss decreased (0.718503 --> 0.624233).  Saving model ...
+[INFO] 2025-12-12 02:14:00,935 Updating learning rate to 0.0001
+[INFO] 2025-12-12 02:16:34,168 Epoch: 3 cost time: 153.23194527626038
+[INFO] 2025-12-12 02:17:08,424 Epoch: 3, Steps: 59 | Train Loss: 0.8299701 Vali Loss: 0.6104339 Test Loss: 0.3969046
+[INFO] 2025-12-12 02:17:08,425 Validation loss decreased (0.624233 --> 0.610434).  Saving model ...
+[INFO] 2025-12-12 02:17:08,444 Updating learning rate to 0.0001
+[INFO] 2025-12-12 02:19:41,731 Epoch: 4 cost time: 153.2860391139984
+[INFO] 2025-12-12 02:19:56,978 Epoch: 4, Steps: 59 | Train Loss: 0.8080392 Vali Loss: 0.6141382 Test Loss: 0.3916830
+[INFO] 2025-12-12 02:19:56,978 EarlyStopping counter: 1 out of 10
+[INFO] 2025-12-12 02:19:56,978 Updating learning rate to 9e-05
+[INFO] 2025-12-12 02:22:30,269 Epoch: 5 cost time: 153.28987503051758
+[INFO] 2025-12-12 02:22:45,551 Epoch: 5, Steps: 59 | Train Loss: 0.7972347 Vali Loss: 0.6172248 Test Loss: 0.3897012
+[INFO] 2025-12-12 02:22:45,551 EarlyStopping counter: 2 out of 10
+[INFO] 2025-12-12 02:22:45,551 Updating learning rate to 8.1e-05
+[INFO] 2025-12-12 02:25:20,172 Epoch: 6 cost time: 154.62037205696106
+[INFO] 2025-12-12 02:25:33,429 Epoch: 6, Steps: 59 | Train Loss: 0.7901190 Vali Loss: 0.6195671 Test Loss: 0.3878574
+[INFO] 2025-12-12 02:25:33,429 EarlyStopping counter: 3 out of 10
+[INFO] 2025-12-12 02:25:33,430 Updating learning rate to 7.290000000000001e-05
+[INFO] 2025-12-12 02:28:06,623 Epoch: 7 cost time: 153.19272470474243
+[INFO] 2025-12-12 02:28:21,918 Epoch: 7, Steps: 59 | Train Loss: 0.7843638 Vali Loss: 0.6226879 Test Loss: 0.3873575
+[INFO] 2025-12-12 02:28:21,918 EarlyStopping counter: 4 out of 10
+[INFO] 2025-12-12 02:28:21,918 Updating learning rate to 6.561e-05
+[INFO] 2025-12-12 02:30:55,195 Epoch: 8 cost time: 153.2763476371765
+[INFO] 2025-12-12 02:31:09,931 Epoch: 8, Steps: 59 | Train Loss: 0.7784508 Vali Loss: 0.6271952 Test Loss: 0.3892894
+[INFO] 2025-12-12 02:31:09,931 EarlyStopping counter: 5 out of 10
+[INFO] 2025-12-12 02:31:09,931 Updating learning rate to 5.904900000000001e-05
+[INFO] 2025-12-12 02:33:43,189 Epoch: 9 cost time: 153.25760340690613
+[INFO] 2025-12-12 02:33:58,171 Epoch: 9, Steps: 59 | Train Loss: 0.7738483 Vali Loss: 0.6415462 Test Loss: 0.3888150
+[INFO] 2025-12-12 02:33:58,171 EarlyStopping counter: 6 out of 10
+[INFO] 2025-12-12 02:33:58,172 Updating learning rate to 5.3144100000000005e-05
+[INFO] 2025-12-12 02:36:31,375 Epoch: 10 cost time: 153.20269012451172
+[INFO] 2025-12-12 02:36:45,611 Epoch: 10, Steps: 59 | Train Loss: 0.7710879 Vali Loss: 0.6355643 Test Loss: 0.3888998
+[INFO] 2025-12-12 02:36:45,611 EarlyStopping counter: 7 out of 10
+[INFO] 2025-12-12 02:36:45,611 Updating learning rate to 4.782969000000001e-05
+[INFO] 2025-12-12 02:39:18,810 Epoch: 11 cost time: 153.198721408844
+[INFO] 2025-12-12 02:39:33,236 Epoch: 11, Steps: 59 | Train Loss: 0.7677509 Vali Loss: 0.6387292 Test Loss: 0.3885023
+[INFO] 2025-12-12 02:39:33,237 EarlyStopping counter: 8 out of 10
+[INFO] 2025-12-12 02:39:33,237 Updating learning rate to 4.304672100000001e-05
+[INFO] 2025-12-12 02:42:06,479 Epoch: 12 cost time: 153.24099349975586
+[INFO] 2025-12-12 02:42:21,054 Epoch: 12, Steps: 59 | Train Loss: 0.7657763 Vali Loss: 0.6361541 Test Loss: 0.3896606
+[INFO] 2025-12-12 02:42:21,054 EarlyStopping counter: 9 out of 10
+[INFO] 2025-12-12 02:42:21,054 Updating learning rate to 3.874204890000001e-05
+[INFO] 2025-12-12 02:44:54,301 Epoch: 13 cost time: 153.24567317962646
+[INFO] 2025-12-12 02:45:09,095 Epoch: 13, Steps: 59 | Train Loss: 0.7622706 Vali Loss: 0.6364106 Test Loss: 0.3899527
+[INFO] 2025-12-12 02:45:09,095 EarlyStopping counter: 10 out of 10
+[INFO] 2025-12-12 02:45:09,095 Early stopping
+[INFO] 2025-12-12 02:45:09,127 >>>>>>>testing : ETTh2_336_720_PatchTST_ETTh2_ftM_sl336_ll48_pl720_dm16_nh4_el3_dl1_df128_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[INFO] 2025-12-12 02:45:09,161 test, 2161
+[INFO] 2025-12-12 02:50:57,165 mse:0.39690476655960083, mae:0.43250006437301636, rse:0.5035572648048401

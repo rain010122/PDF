@@ -37,14 +37,15 @@ do
     --dropout 0.5 \
     --fc_dropout 0.25 \
     --kernel_list 5 7 11 15 \
-    --period 48 90 102 360 720 \
-    --patch_len 3 6 16 32 48 \
-    --stride 3 6 16 32 48 \
+    --period 48 90 360 \
+    --patch_len 3 6 32 \
+    --stride 3 6 32 \
     --des Exp \
     --lradj 'TST' \
-    --train_epochs 100 \
-    --patience 20 \
-    --itr 1 --batch_size 128 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_not_our_'$model_id_name'_'$seq_len'_'$pred_len.log
+    --train_epochs 20 \
+    --patience 10 \
+    --itr 1 --batch_size 128 --learning_rate 0.0001 
+    # >logs/LongForecasting/$model_name'_not_our_'$model_id_name'_'$seq_len'_'$pred_len.log
 done
 
 for pred_len in 720
@@ -68,12 +69,13 @@ do
     --dropout 0.5 \
     --fc_dropout 0.25 \
     --kernel_list 5 7 11 15 \
-    --period 48 90 102 360 720 \
-    --patch_len 3 6 16 32 48 \
-    --stride 3 6 16 32 48 \
+    --period 48 360 720 \
+    --patch_len 3 32 48 \
+    --stride 3 32 48 \
     --des Exp \
     --lradj 'TST' \
-    --train_epochs 100 \
-    --patience 20 \
-    --itr 1 --batch_size 128 --learning_rate 0.00005 >logs/LongForecasting/$model_name'_not_our_'$model_id_name'_'$seq_len'_'$pred_len.log
+    --train_epochs 20 \
+    --patience 10 \
+    --itr 1 --batch_size 128 --learning_rate 0.00005 
+    # >logs/LongForecasting/$model_name'_not_our_'$model_id_name'_'$seq_len'_'$pred_len.log
 done

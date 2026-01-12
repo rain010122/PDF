@@ -34,12 +34,12 @@ do
   --d_model 16 \
   --d_ff 128 \
   --dropout 0.3 \
-  --period 24 84 \
-  --persevere 0 \
-  --patch_len 1 6\
-  --stride 1 6\
+  --period 24 \
+  --patch_len 1 \
+  --stride 1 \
   --des Exp \
   --train_epochs 100 \
-  --patience 20 \
-  --itr 1 --batch_size 128 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+  --patience 10 \
+  --itr 1 --batch_size 128 --learning_rate 0.0001 
+  # >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done

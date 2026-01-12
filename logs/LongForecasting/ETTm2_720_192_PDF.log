@@ -1,0 +1,174 @@
+[INFO] 2025-12-16 12:43:29,899 ==================================================
+[INFO] 2025-12-16 12:43:30,055 Args in experiment:
+[INFO] 2025-12-16 12:43:30,055 random_seed: 2021
+[INFO] 2025-12-16 12:43:30,055 is_training: 1
+[INFO] 2025-12-16 12:43:30,055 model_id: ETTm2_720_192
+[INFO] 2025-12-16 12:43:30,055 model: PDF
+[INFO] 2025-12-16 12:43:30,055 data: ETTm2
+[INFO] 2025-12-16 12:43:30,055 root_path: ./dataset/
+[INFO] 2025-12-16 12:43:30,055 data_path: ETTm2.csv
+[INFO] 2025-12-16 12:43:30,055 features: M
+[INFO] 2025-12-16 12:43:30,055 target: OT
+[INFO] 2025-12-16 12:43:30,055 freq: h
+[INFO] 2025-12-16 12:43:30,055 checkpoints: ./checkpoints/
+[INFO] 2025-12-16 12:43:30,055 seq_len: 720
+[INFO] 2025-12-16 12:43:30,055 label_len: 48
+[INFO] 2025-12-16 12:43:30,055 pred_len: 192
+[INFO] 2025-12-16 12:43:30,055 fc_dropout: 0.2
+[INFO] 2025-12-16 12:43:30,055 head_dropout: 0.0
+[INFO] 2025-12-16 12:43:30,055 add: False
+[INFO] 2025-12-16 12:43:30,055 wo_conv: False
+[INFO] 2025-12-16 12:43:30,055 serial_conv: False
+[INFO] 2025-12-16 12:43:30,055 kernel_list: [3, 7, 11]
+[INFO] 2025-12-16 12:43:30,055 patch_len: [16, 24]
+[INFO] 2025-12-16 12:43:30,055 period: [102, 720]
+[INFO] 2025-12-16 12:43:30,055 stride: [16, 24]
+[INFO] 2025-12-16 12:43:30,055 padding_patch: end
+[INFO] 2025-12-16 12:43:30,055 revin: 1
+[INFO] 2025-12-16 12:43:30,055 affine: 0
+[INFO] 2025-12-16 12:43:30,055 subtract_last: 0
+[INFO] 2025-12-16 12:43:30,055 decomposition: 0
+[INFO] 2025-12-16 12:43:30,055 kernel_size: 25
+[INFO] 2025-12-16 12:43:30,055 individual: 0
+[INFO] 2025-12-16 12:43:30,055 embed_type: 0
+[INFO] 2025-12-16 12:43:30,055 enc_in: 7
+[INFO] 2025-12-16 12:43:30,065 dec_in: 7
+[INFO] 2025-12-16 12:43:30,065 c_out: 7
+[INFO] 2025-12-16 12:43:30,065 d_model: 48
+[INFO] 2025-12-16 12:43:30,065 n_heads: 16
+[INFO] 2025-12-16 12:43:30,065 e_layers: 3
+[INFO] 2025-12-16 12:43:30,065 d_layers: 1
+[INFO] 2025-12-16 12:43:30,066 d_ff: 48
+[INFO] 2025-12-16 12:43:30,066 moving_avg: 25
+[INFO] 2025-12-16 12:43:30,066 factor: 1
+[INFO] 2025-12-16 12:43:30,067 distil: True
+[INFO] 2025-12-16 12:43:30,067 dropout: 0.45
+[INFO] 2025-12-16 12:43:30,067 attn_dropout: 0.05
+[INFO] 2025-12-16 12:43:30,067 embed: timeF
+[INFO] 2025-12-16 12:43:30,067 activation: gelu
+[INFO] 2025-12-16 12:43:30,067 output_attention: False
+[INFO] 2025-12-16 12:43:30,067 do_predict: False
+[INFO] 2025-12-16 12:43:30,067 num_workers: 0
+[INFO] 2025-12-16 12:43:30,067 itr: 1
+[INFO] 2025-12-16 12:43:30,068 train_epochs: 15
+[INFO] 2025-12-16 12:43:30,068 batch_size: 128
+[INFO] 2025-12-16 12:43:30,068 patience: 5
+[INFO] 2025-12-16 12:43:30,068 learning_rate: 0.0001
+[INFO] 2025-12-16 12:43:30,068 des: Exp
+[INFO] 2025-12-16 12:43:30,068 loss: mse
+[INFO] 2025-12-16 12:43:30,068 lradj: TST
+[INFO] 2025-12-16 12:43:30,069 pct_start: 0.3
+[INFO] 2025-12-16 12:43:30,069 use_amp: False
+[INFO] 2025-12-16 12:43:30,069 use_gpu: True
+[INFO] 2025-12-16 12:43:30,069 gpu: 0
+[INFO] 2025-12-16 12:43:30,069 use_multi_gpu: False
+[INFO] 2025-12-16 12:43:30,069 devices: 0,1,2,3,4,5,6,7
+[INFO] 2025-12-16 12:43:30,069 test_flop: False
+[INFO] 2025-12-16 12:43:30,069 log: ./logs/LongForecasting/PatchTST_Electricity_336_96.log
+[INFO] 2025-12-16 12:43:30,069 Use GPU: cuda:0
+[INFO] 2025-12-16 12:43:30,473 >>>>>>>start training : ETTm2_720_192_PDF_ETTm2_ftM_sl720_ll48_pl192_dm48_nh16_el3_dl1_df48_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] 2025-12-16 12:43:30,892 train, 33649
+[INFO] 2025-12-16 12:43:31,006 val, 11329
+[INFO] 2025-12-16 12:43:31,121 test, 11329
+[INFO] 2025-12-16 12:43:41,806 	iters: 100, epoch: 1 | loss: 0.4220795
+[INFO] 2025-12-16 12:43:41,806 	speed: 0.1067s/iter; left time: 408.7626s
+[INFO] 2025-12-16 12:43:46,366 	iters: 200, epoch: 1 | loss: 0.3951432
+[INFO] 2025-12-16 12:43:46,366 	speed: 0.0456s/iter; left time: 170.1263s
+[INFO] 2025-12-16 12:43:49,209 Epoch: 1 cost time: 14.934704303741455
+[INFO] 2025-12-16 12:45:56,350 Epoch: 1, Steps: 262 | Train Loss: 0.4672226 Vali Loss: 0.1899273 Test Loss: 0.2608755
+[INFO] 2025-12-16 12:45:56,350 Validation loss decreased (inf --> 0.189927).  Saving model ...
+[INFO] 2025-12-16 12:45:56,478 Updating learning rate to 1.5248158432288746e-05
+[INFO] 2025-12-16 12:46:02,315 	iters: 100, epoch: 2 | loss: 0.3304703
+[INFO] 2025-12-16 12:46:02,315 	speed: 1.3595s/iter; left time: 4852.0174s
+[INFO] 2025-12-16 12:46:08,106 	iters: 200, epoch: 2 | loss: 0.2738348
+[INFO] 2025-12-16 12:46:08,106 	speed: 0.0579s/iter; left time: 200.9004s
+[INFO] 2025-12-16 12:46:11,684 Epoch: 2 cost time: 15.205276489257812
+[INFO] 2025-12-16 12:48:17,758 Epoch: 2, Steps: 262 | Train Loss: 0.3483915 Vali Loss: 0.1576815 Test Loss: 0.2254846
+[INFO] 2025-12-16 12:48:17,758 Validation loss decreased (0.189927 --> 0.157681).  Saving model ...
+[INFO] 2025-12-16 12:48:17,793 Updating learning rate to 4.372092255757713e-05
+[INFO] 2025-12-16 12:48:22,607 	iters: 100, epoch: 3 | loss: 0.4520831
+[INFO] 2025-12-16 12:48:22,607 	speed: 1.3450s/iter; left time: 4447.9359s
+[INFO] 2025-12-16 12:48:28,002 	iters: 200, epoch: 3 | loss: 0.3079568
+[INFO] 2025-12-16 12:48:28,002 	speed: 0.0540s/iter; left time: 173.0346s
+[INFO] 2025-12-16 12:48:31,621 Epoch: 3 cost time: 13.826213598251343
+[INFO] 2025-12-16 12:50:39,518 Epoch: 3, Steps: 262 | Train Loss: 0.3148573 Vali Loss: 0.1553811 Test Loss: 0.2176168
+[INFO] 2025-12-16 12:50:39,518 Validation loss decreased (0.157681 --> 0.155381).  Saving model ...
+[INFO] 2025-12-16 12:50:39,554 Updating learning rate to 7.607386896393052e-05
+[INFO] 2025-12-16 12:50:45,549 	iters: 100, epoch: 4 | loss: 0.3233177
+[INFO] 2025-12-16 12:50:45,549 	speed: 1.3755s/iter; left time: 4188.2791s
+[INFO] 2025-12-16 12:50:51,321 	iters: 200, epoch: 4 | loss: 0.2406721
+[INFO] 2025-12-16 12:50:51,321 	speed: 0.0577s/iter; left time: 169.9957s
+[INFO] 2025-12-16 12:50:54,749 Epoch: 4 cost time: 15.189550876617432
+[INFO] 2025-12-16 12:53:05,252 Epoch: 4, Steps: 262 | Train Loss: 0.3020502 Vali Loss: 0.1546307 Test Loss: 0.2168397
+[INFO] 2025-12-16 12:53:05,252 Validation loss decreased (0.155381 --> 0.154631).  Saving model ...
+[INFO] 2025-12-16 12:53:05,286 Updating learning rate to 9.71440365292652e-05
+[INFO] 2025-12-16 12:53:10,870 	iters: 100, epoch: 5 | loss: 0.3183790
+[INFO] 2025-12-16 12:53:10,870 	speed: 1.3955s/iter; left time: 3883.6597s
+[INFO] 2025-12-16 12:53:16,311 	iters: 200, epoch: 5 | loss: 0.2921201
+[INFO] 2025-12-16 12:53:16,311 	speed: 0.0544s/iter; left time: 145.9862s
+[INFO] 2025-12-16 12:53:19,966 Epoch: 5 cost time: 14.677926301956177
+[INFO] 2025-12-16 12:55:24,918 Epoch: 5, Steps: 262 | Train Loss: 0.2890379 Vali Loss: 0.1563057 Test Loss: 0.2195613
+[INFO] 2025-12-16 12:55:24,918 EarlyStopping counter: 1 out of 5
+[INFO] 2025-12-16 12:55:24,918 Updating learning rate to 9.943300116246229e-05
+[INFO] 2025-12-16 12:55:29,744 	iters: 100, epoch: 6 | loss: 0.2491703
+[INFO] 2025-12-16 12:55:29,744 	speed: 1.3343s/iter; left time: 3363.8319s
+[INFO] 2025-12-16 12:55:34,433 	iters: 200, epoch: 6 | loss: 0.2561868
+[INFO] 2025-12-16 12:55:34,433 	speed: 0.0469s/iter; left time: 113.5335s
+[INFO] 2025-12-16 12:55:37,981 Epoch: 6 cost time: 13.062830924987793
+[INFO] 2025-12-16 12:57:45,497 Epoch: 6, Steps: 262 | Train Loss: 0.2780135 Vali Loss: 0.1558200 Test Loss: 0.2178093
+[INFO] 2025-12-16 12:57:45,497 EarlyStopping counter: 2 out of 5
+[INFO] 2025-12-16 12:57:45,497 Updating learning rate to 9.50236595592327e-05
+[INFO] 2025-12-16 12:57:51,065 	iters: 100, epoch: 7 | loss: 0.2930231
+[INFO] 2025-12-16 12:57:51,065 	speed: 1.3663s/iter; left time: 3086.5016s
+[INFO] 2025-12-16 12:57:55,822 	iters: 200, epoch: 7 | loss: 0.3323007
+[INFO] 2025-12-16 12:57:55,822 	speed: 0.0476s/iter; left time: 102.7100s
+[INFO] 2025-12-16 12:57:58,818 Epoch: 7 cost time: 13.32146692276001
+[INFO] 2025-12-16 13:00:04,952 Epoch: 7, Steps: 262 | Train Loss: 0.2731199 Vali Loss: 0.1542383 Test Loss: 0.2165841
+[INFO] 2025-12-16 13:00:04,952 Validation loss decreased (0.154631 --> 0.154238).  Saving model ...
+[INFO] 2025-12-16 13:00:04,978 Updating learning rate to 8.661378599196733e-05
+[INFO] 2025-12-16 13:00:09,758 	iters: 100, epoch: 8 | loss: 0.2521354
+[INFO] 2025-12-16 13:00:09,758 	speed: 1.3394s/iter; left time: 2674.6959s
+[INFO] 2025-12-16 13:00:15,512 	iters: 200, epoch: 8 | loss: 0.2000944
+[INFO] 2025-12-16 13:00:15,512 	speed: 0.0575s/iter; left time: 109.1351s
+[INFO] 2025-12-16 13:00:18,795 Epoch: 8 cost time: 13.814515829086304
+[INFO] 2025-12-16 13:02:28,525 Epoch: 8, Steps: 262 | Train Loss: 0.2682783 Vali Loss: 0.1545819 Test Loss: 0.2160909
+[INFO] 2025-12-16 13:02:28,526 EarlyStopping counter: 1 out of 5
+[INFO] 2025-12-16 13:02:28,526 Updating learning rate to 7.495063463324005e-05
+[INFO] 2025-12-16 13:02:33,947 	iters: 100, epoch: 9 | loss: 0.2262343
+[INFO] 2025-12-16 13:02:33,947 	speed: 1.3843s/iter; left time: 2401.8344s
+[INFO] 2025-12-16 13:02:39,466 	iters: 200, epoch: 9 | loss: 0.3511174
+[INFO] 2025-12-16 13:02:39,466 	speed: 0.0552s/iter; left time: 90.2312s
+[INFO] 2025-12-16 13:02:42,951 Epoch: 9 cost time: 14.423238754272461
+[INFO] 2025-12-16 13:04:55,444 Epoch: 9, Steps: 262 | Train Loss: 0.2649493 Vali Loss: 0.1555198 Test Loss: 0.2170675
+[INFO] 2025-12-16 13:04:55,444 EarlyStopping counter: 2 out of 5
+[INFO] 2025-12-16 13:04:55,444 Updating learning rate to 6.107052766417045e-05
+[INFO] 2025-12-16 13:05:01,473 	iters: 100, epoch: 10 | loss: 0.2696631
+[INFO] 2025-12-16 13:05:01,473 	speed: 1.4201s/iter; left time: 2091.7683s
+[INFO] 2025-12-16 13:05:07,797 	iters: 200, epoch: 10 | loss: 0.2567973
+[INFO] 2025-12-16 13:05:07,797 	speed: 0.0632s/iter; left time: 86.8299s
+[INFO] 2025-12-16 13:05:11,714 Epoch: 10 cost time: 16.27066469192505
+[INFO] 2025-12-16 13:07:23,667 Epoch: 10, Steps: 262 | Train Loss: 0.2623250 Vali Loss: 0.1550703 Test Loss: 0.2175408
+[INFO] 2025-12-16 13:07:23,667 EarlyStopping counter: 3 out of 5
+[INFO] 2025-12-16 13:07:23,667 Updating learning rate to 4.6206773500806535e-05
+[INFO] 2025-12-16 13:07:29,514 	iters: 100, epoch: 11 | loss: 0.2283434
+[INFO] 2025-12-16 13:07:29,514 	speed: 1.4172s/iter; left time: 1716.1892s
+[INFO] 2025-12-16 13:07:35,194 	iters: 200, epoch: 11 | loss: 0.1791279
+[INFO] 2025-12-16 13:07:35,194 	speed: 0.0568s/iter; left time: 63.1025s
+[INFO] 2025-12-16 13:07:38,774 Epoch: 11 cost time: 15.107243299484253
+[INFO] 2025-12-16 13:09:43,088 Epoch: 11, Steps: 262 | Train Loss: 0.2614788 Vali Loss: 0.1552123 Test Loss: 0.2159435
+[INFO] 2025-12-16 13:09:43,088 EarlyStopping counter: 4 out of 5
+[INFO] 2025-12-16 13:09:43,088 Updating learning rate to 3.168008192907396e-05
+[INFO] 2025-12-16 13:09:48,902 	iters: 100, epoch: 12 | loss: 0.1994461
+[INFO] 2025-12-16 13:09:48,902 	speed: 1.3371s/iter; left time: 1268.8871s
+[INFO] 2025-12-16 13:09:54,611 	iters: 200, epoch: 12 | loss: 0.2367329
+[INFO] 2025-12-16 13:09:54,611 	speed: 0.0571s/iter; left time: 48.4707s
+[INFO] 2025-12-16 13:09:58,194 Epoch: 12 cost time: 15.106708765029907
+[INFO] 2025-12-16 13:12:03,990 Epoch: 12, Steps: 262 | Train Loss: 0.2590049 Vali Loss: 0.1552443 Test Loss: 0.2161887
+[INFO] 2025-12-16 13:12:03,990 EarlyStopping counter: 5 out of 5
+[INFO] 2025-12-16 13:12:03,990 Early stopping
+[INFO] 2025-12-16 13:12:04,075 >>>>>>>testing : ETTm2_720_192_PDF_ETTm2_ftM_sl720_ll48_pl192_dm48_nh16_el3_dl1_df48_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[INFO] 2025-12-16 13:12:04,207 test, 11329
+[INFO] 2025-12-16 13:41:35,130 mse:0.21658426523208618, mae:0.29187995195388794, rse:0.3767112195491791
+[INFO] 2025-12-16 13:41:35,697 start_time: 2025-12-16 12:43:29
+[INFO] 2025-12-16 13:41:35,698 end_time: 2025-12-16 13:41:35
+[INFO] 2025-12-16 13:41:35,698 ×ÜºÄÊ±Îª£º00:58:05

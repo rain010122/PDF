@@ -114,7 +114,7 @@ class Config(object):
         self.checkpoints = self.get_config('path', 'checkpoints')
         log_path_base = self.get_config('path', 'log_path')
         # 支持日志自动append时间戳（不想带时间戳可直接self.log_path=xxx）
-        self.log_path = log_path_base.replace(".log", f"_{self.date}_{self.version}.log")
+        self.log_path = log_path_base.replace(".log", f"{self.model_id}_{self.model}_{self.date}_{self.version}.log")
         # ==== model_params ====
         mp = 'model_params'
         self.fc_dropout = self.get_config(mp, 'fc_dropout')

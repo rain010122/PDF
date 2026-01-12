@@ -21,7 +21,7 @@ do
       --is_training 1 \
       --root_path $root_path_name \
       --data_path $data_path_name \
-      --model_id $model_id_name_$seq_len'_'$pred_len \
+      --model_id $model_id_name'_'$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
       --features M \
@@ -39,9 +39,10 @@ do
       --patch_len 16 16 24 \
       --stride 16 16 24 \
       --des 'Exp' \
-      --patience 20 \
-      --train_epochs 100 \
-      --itr 1 --batch_size 64 --learning_rate 0.00015 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+      --patience 10 \
+      --train_epochs 20 \
+      --itr 1 --batch_size 64 --learning_rate 0.00015 
+    #   >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done
 
 for pred_len in 720
@@ -51,7 +52,7 @@ do
       --is_training 1 \
       --root_path $root_path_name \
       --data_path $data_path_name \
-      --model_id $model_id_name_$seq_len'_'$pred_len \
+      --model_id $model_id_name'_'$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
       --features M \
@@ -69,7 +70,8 @@ do
       --patch_len 12 15 24 \
       --stride 12 15 24 \
       --des 'Exp' \
-      --patience 20 \
-      --train_epochs 100 \
-      --itr 1 --batch_size 128 --learning_rate 0.00005 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
+      --patience 10 \
+      --train_epochs 20 \
+      --itr 1 --batch_size 128 --learning_rate 0.00005 
+    #   >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done

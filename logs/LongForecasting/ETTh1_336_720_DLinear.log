@@ -1,0 +1,335 @@
+[INFO] 2025-12-11 16:10:31,900 ==================================================
+[INFO] 2025-12-11 16:10:31,941 Args in experiment:
+[INFO] 2025-12-11 16:10:31,942 random_seed: 2021
+[INFO] 2025-12-11 16:10:31,942 is_training: 1
+[INFO] 2025-12-11 16:10:31,942 model_id: ETTh1_336_720
+[INFO] 2025-12-11 16:10:31,942 model: DLinear
+[INFO] 2025-12-11 16:10:31,942 data: ETTh1
+[INFO] 2025-12-11 16:10:31,943 root_path: ./dataset/
+[INFO] 2025-12-11 16:10:31,943 data_path: ETTh1.csv
+[INFO] 2025-12-11 16:10:31,943 features: M
+[INFO] 2025-12-11 16:10:31,943 target: OT
+[INFO] 2025-12-11 16:10:31,943 freq: h
+[INFO] 2025-12-11 16:10:31,943 checkpoints: ./checkpoints/
+[INFO] 2025-12-11 16:10:31,944 seq_len: 336
+[INFO] 2025-12-11 16:10:31,944 label_len: 48
+[INFO] 2025-12-11 16:10:31,944 pred_len: 720
+[INFO] 2025-12-11 16:10:31,944 fc_dropout: 0.0
+[INFO] 2025-12-11 16:10:31,944 head_dropout: 0.0
+[INFO] 2025-12-11 16:10:31,945 add: False
+[INFO] 2025-12-11 16:10:31,945 wo_conv: False
+[INFO] 2025-12-11 16:10:31,945 serial_conv: False
+[INFO] 2025-12-11 16:10:31,945 kernel_list: [3, 7, 9]
+[INFO] 2025-12-11 16:10:31,945 patch_len: [16]
+[INFO] 2025-12-11 16:10:31,945 period: [24, 12]
+[INFO] 2025-12-11 16:10:31,946 stride: None
+[INFO] 2025-12-11 16:10:31,946 padding_patch: end
+[INFO] 2025-12-11 16:10:31,946 revin: 1
+[INFO] 2025-12-11 16:10:31,946 affine: 0
+[INFO] 2025-12-11 16:10:31,946 subtract_last: 0
+[INFO] 2025-12-11 16:10:31,946 decomposition: 0
+[INFO] 2025-12-11 16:10:31,947 kernel_size: 25
+[INFO] 2025-12-11 16:10:31,947 individual: 0
+[INFO] 2025-12-11 16:10:31,947 embed_type: 0
+[INFO] 2025-12-11 16:10:31,947 enc_in: 7
+[INFO] 2025-12-11 16:10:31,947 dec_in: 7
+[INFO] 2025-12-11 16:10:31,947 c_out: 7
+[INFO] 2025-12-11 16:10:31,947 d_model: 512
+[INFO] 2025-12-11 16:10:31,948 n_heads: 8
+[INFO] 2025-12-11 16:10:31,948 e_layers: 2
+[INFO] 2025-12-11 16:10:31,948 d_layers: 1
+[INFO] 2025-12-11 16:10:31,948 d_ff: 2048
+[INFO] 2025-12-11 16:10:31,948 moving_avg: 25
+[INFO] 2025-12-11 16:10:31,948 factor: 1
+[INFO] 2025-12-11 16:10:31,948 distil: True
+[INFO] 2025-12-11 16:10:31,949 dropout: 0.05
+[INFO] 2025-12-11 16:10:31,949 attn_dropout: 0.05
+[INFO] 2025-12-11 16:10:31,949 embed: timeF
+[INFO] 2025-12-11 16:10:31,949 activation: gelu
+[INFO] 2025-12-11 16:10:31,949 output_attention: False
+[INFO] 2025-12-11 16:10:31,949 do_predict: False
+[INFO] 2025-12-11 16:10:31,949 num_workers: 0
+[INFO] 2025-12-11 16:10:31,950 itr: 1
+[INFO] 2025-12-11 16:10:31,950 train_epochs: 100
+[INFO] 2025-12-11 16:10:31,950 batch_size: 32
+[INFO] 2025-12-11 16:10:31,950 patience: 10
+[INFO] 2025-12-11 16:10:31,950 learning_rate: 0.005
+[INFO] 2025-12-11 16:10:31,950 des: Exp
+[INFO] 2025-12-11 16:10:31,950 loss: mse
+[INFO] 2025-12-11 16:10:31,951 lradj: type3
+[INFO] 2025-12-11 16:10:31,951 pct_start: 0.3
+[INFO] 2025-12-11 16:10:31,951 use_amp: False
+[INFO] 2025-12-11 16:10:31,951 use_gpu: True
+[INFO] 2025-12-11 16:10:31,951 gpu: 0
+[INFO] 2025-12-11 16:10:31,951 use_multi_gpu: False
+[INFO] 2025-12-11 16:10:31,951 devices: 0,1,2,3,4,5,6,7
+[INFO] 2025-12-11 16:10:31,952 test_flop: False
+[INFO] 2025-12-11 16:10:31,952 log: ./logs/LongForecasting/PatchTST_Electricity_336_96.log
+[INFO] 2025-12-11 16:10:31,952 Use GPU: cuda:0
+[INFO] 2025-12-11 16:10:32,052 >>>>>>>start training : ETTh1_336_720_DLinear_ETTh1_ftM_sl336_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] 2025-12-11 16:10:32,098 train, 7585
+[INFO] 2025-12-11 16:10:32,134 val, 2161
+[INFO] 2025-12-11 16:10:32,169 test, 2161
+[INFO] 2025-12-11 16:10:33,417 	iters: 100, epoch: 1 | loss: 0.5628002
+[INFO] 2025-12-11 16:10:33,417 	speed: 0.0125s/iter; left time: 294.4060s
+[INFO] 2025-12-11 16:10:33,827 	iters: 200, epoch: 1 | loss: 0.5264315
+[INFO] 2025-12-11 16:10:33,827 	speed: 0.0041s/iter; left time: 96.0570s
+[INFO] 2025-12-11 16:10:33,960 Epoch: 1 cost time: 1.1164309978485107
+[INFO] 2025-12-11 16:10:36,766 Epoch: 1, Steps: 237 | Train Loss: 0.6274555 Vali Loss: 1.2625461 Test Loss: 0.5068398
+[INFO] 2025-12-11 16:10:36,766 Validation loss decreased (inf --> 1.262546).  Saving model ...
+[INFO] 2025-12-11 16:10:37,135 	iters: 100, epoch: 2 | loss: 0.5471516
+[INFO] 2025-12-11 16:10:37,135 	speed: 0.0331s/iter; left time: 772.7888s
+[INFO] 2025-12-11 16:10:37,533 	iters: 200, epoch: 2 | loss: 0.5341409
+[INFO] 2025-12-11 16:10:37,534 	speed: 0.0040s/iter; left time: 92.8794s
+[INFO] 2025-12-11 16:10:37,671 Epoch: 2 cost time: 0.9024667739868164
+[INFO] 2025-12-11 16:10:40,204 Epoch: 2, Steps: 237 | Train Loss: 0.5423621 Vali Loss: 1.2264916 Test Loss: 0.4971026
+[INFO] 2025-12-11 16:10:40,204 Validation loss decreased (1.262546 --> 1.226492).  Saving model ...
+[INFO] 2025-12-11 16:10:40,627 	iters: 100, epoch: 3 | loss: 0.5147943
+[INFO] 2025-12-11 16:10:40,628 	speed: 0.0309s/iter; left time: 715.5774s
+[INFO] 2025-12-11 16:10:40,988 	iters: 200, epoch: 3 | loss: 0.5164788
+[INFO] 2025-12-11 16:10:40,988 	speed: 0.0036s/iter; left time: 82.8936s
+[INFO] 2025-12-11 16:10:41,130 Epoch: 3 cost time: 0.9228038787841797
+[INFO] 2025-12-11 16:10:43,686 Epoch: 3, Steps: 237 | Train Loss: 0.5302196 Vali Loss: 1.2343556 Test Loss: 0.4846513
+[INFO] 2025-12-11 16:10:43,687 EarlyStopping counter: 1 out of 10
+[INFO] 2025-12-11 16:10:44,078 	iters: 100, epoch: 4 | loss: 0.5277752
+[INFO] 2025-12-11 16:10:44,079 	speed: 0.0309s/iter; left time: 707.3380s
+[INFO] 2025-12-11 16:10:44,470 	iters: 200, epoch: 4 | loss: 0.5249587
+[INFO] 2025-12-11 16:10:44,470 	speed: 0.0039s/iter; left time: 89.0891s
+[INFO] 2025-12-11 16:10:44,624 Epoch: 4 cost time: 0.9373762607574463
+[INFO] 2025-12-11 16:10:46,913 Epoch: 4, Steps: 237 | Train Loss: 0.5255678 Vali Loss: 1.2435390 Test Loss: 0.4793349
+[INFO] 2025-12-11 16:10:46,913 EarlyStopping counter: 2 out of 10
+[INFO] 2025-12-11 16:10:47,415 	iters: 100, epoch: 5 | loss: 0.5404559
+[INFO] 2025-12-11 16:10:47,416 	speed: 0.0295s/iter; left time: 667.3587s
+[INFO] 2025-12-11 16:10:47,838 	iters: 200, epoch: 5 | loss: 0.5219511
+[INFO] 2025-12-11 16:10:47,839 	speed: 0.0042s/iter; left time: 95.2802s
+[INFO] 2025-12-11 16:10:48,022 Epoch: 5 cost time: 1.1086671352386475
+[INFO] 2025-12-11 16:10:50,633 Epoch: 5, Steps: 237 | Train Loss: 0.5229158 Vali Loss: 1.2389818 Test Loss: 0.4788788
+[INFO] 2025-12-11 16:10:50,633 EarlyStopping counter: 3 out of 10
+[INFO] 2025-12-11 16:10:51,164 	iters: 100, epoch: 6 | loss: 0.5215775
+[INFO] 2025-12-11 16:10:51,165 	speed: 0.0333s/iter; left time: 745.7172s
+[INFO] 2025-12-11 16:10:51,565 	iters: 200, epoch: 6 | loss: 0.5200908
+[INFO] 2025-12-11 16:10:51,565 	speed: 0.0040s/iter; left time: 89.1596s
+[INFO] 2025-12-11 16:10:51,708 Epoch: 6 cost time: 1.0748629570007324
+[INFO] 2025-12-11 16:10:53,951 Epoch: 6, Steps: 237 | Train Loss: 0.5214377 Vali Loss: 1.2250583 Test Loss: 0.4839880
+[INFO] 2025-12-11 16:10:53,951 Validation loss decreased (1.226492 --> 1.225058).  Saving model ...
+[INFO] 2025-12-11 16:10:54,315 	iters: 100, epoch: 7 | loss: 0.5222738
+[INFO] 2025-12-11 16:10:54,315 	speed: 0.0275s/iter; left time: 609.8236s
+[INFO] 2025-12-11 16:10:54,705 	iters: 200, epoch: 7 | loss: 0.5322587
+[INFO] 2025-12-11 16:10:54,705 	speed: 0.0039s/iter; left time: 86.2462s
+[INFO] 2025-12-11 16:10:54,854 Epoch: 7 cost time: 0.900054931640625
+[INFO] 2025-12-11 16:10:57,755 Epoch: 7, Steps: 237 | Train Loss: 0.5204117 Vali Loss: 1.2356668 Test Loss: 0.4787965
+[INFO] 2025-12-11 16:10:57,756 EarlyStopping counter: 1 out of 10
+[INFO] 2025-12-11 16:10:58,187 	iters: 100, epoch: 8 | loss: 0.5675458
+[INFO] 2025-12-11 16:10:58,187 	speed: 0.0348s/iter; left time: 763.9787s
+[INFO] 2025-12-11 16:10:58,538 	iters: 200, epoch: 8 | loss: 0.4817566
+[INFO] 2025-12-11 16:10:58,538 	speed: 0.0035s/iter; left time: 76.4568s
+[INFO] 2025-12-11 16:10:58,677 Epoch: 8 cost time: 0.921086311340332
+[INFO] 2025-12-11 16:11:00,973 Epoch: 8, Steps: 237 | Train Loss: 0.5197459 Vali Loss: 1.2227449 Test Loss: 0.4817125
+[INFO] 2025-12-11 16:11:00,973 Validation loss decreased (1.225058 --> 1.222745).  Saving model ...
+[INFO] 2025-12-11 16:11:01,332 	iters: 100, epoch: 9 | loss: 0.4966603
+[INFO] 2025-12-11 16:11:01,332 	speed: 0.0279s/iter; left time: 606.4197s
+[INFO] 2025-12-11 16:11:01,726 	iters: 200, epoch: 9 | loss: 0.5142676
+[INFO] 2025-12-11 16:11:01,726 	speed: 0.0039s/iter; left time: 85.1300s
+[INFO] 2025-12-11 16:11:01,895 Epoch: 9 cost time: 0.9195144176483154
+[INFO] 2025-12-11 16:11:04,239 Epoch: 9, Steps: 237 | Train Loss: 0.5187799 Vali Loss: 1.2142271 Test Loss: 0.4837446
+[INFO] 2025-12-11 16:11:04,240 Validation loss decreased (1.222745 --> 1.214227).  Saving model ...
+[INFO] 2025-12-11 16:11:04,695 	iters: 100, epoch: 10 | loss: 0.5179455
+[INFO] 2025-12-11 16:11:04,695 	speed: 0.0297s/iter; left time: 637.0770s
+[INFO] 2025-12-11 16:11:05,085 	iters: 200, epoch: 10 | loss: 0.5209903
+[INFO] 2025-12-11 16:11:05,085 	speed: 0.0039s/iter; left time: 83.2111s
+[INFO] 2025-12-11 16:11:05,243 Epoch: 10 cost time: 1.0000410079956055
+[INFO] 2025-12-11 16:11:07,745 Epoch: 10, Steps: 237 | Train Loss: 0.5182069 Vali Loss: 1.2273679 Test Loss: 0.4769827
+[INFO] 2025-12-11 16:11:07,745 EarlyStopping counter: 1 out of 10
+[INFO] 2025-12-11 16:11:08,219 	iters: 100, epoch: 11 | loss: 0.4197529
+[INFO] 2025-12-11 16:11:08,219 	speed: 0.0313s/iter; left time: 665.3866s
+[INFO] 2025-12-11 16:11:08,628 	iters: 200, epoch: 11 | loss: 0.5645880
+[INFO] 2025-12-11 16:11:08,628 	speed: 0.0041s/iter; left time: 86.4917s
+[INFO] 2025-12-11 16:11:08,788 Epoch: 11 cost time: 1.0432868003845215
+[INFO] 2025-12-11 16:11:11,105 Epoch: 11, Steps: 237 | Train Loss: 0.5175949 Vali Loss: 1.2231821 Test Loss: 0.4768363
+[INFO] 2025-12-11 16:11:11,105 EarlyStopping counter: 2 out of 10
+[INFO] 2025-12-11 16:11:11,550 	iters: 100, epoch: 12 | loss: 0.4904080
+[INFO] 2025-12-11 16:11:11,550 	speed: 0.0292s/iter; left time: 613.4340s
+[INFO] 2025-12-11 16:11:11,918 	iters: 200, epoch: 12 | loss: 0.5424690
+[INFO] 2025-12-11 16:11:11,919 	speed: 0.0037s/iter; left time: 77.0439s
+[INFO] 2025-12-11 16:11:12,069 Epoch: 12 cost time: 0.9641423225402832
+[INFO] 2025-12-11 16:11:14,295 Epoch: 12, Steps: 237 | Train Loss: 0.5169913 Vali Loss: 1.2134426 Test Loss: 0.4831400
+[INFO] 2025-12-11 16:11:14,295 Validation loss decreased (1.214227 --> 1.213443).  Saving model ...
+[INFO] 2025-12-11 16:11:14,759 	iters: 100, epoch: 13 | loss: 0.5439372
+[INFO] 2025-12-11 16:11:14,759 	speed: 0.0284s/iter; left time: 589.4108s
+[INFO] 2025-12-11 16:11:15,153 	iters: 200, epoch: 13 | loss: 0.4963754
+[INFO] 2025-12-11 16:11:15,153 	speed: 0.0039s/iter; left time: 81.5763s
+[INFO] 2025-12-11 16:11:15,295 Epoch: 13 cost time: 0.996527910232544
+[INFO] 2025-12-11 16:11:17,674 Epoch: 13, Steps: 237 | Train Loss: 0.5173143 Vali Loss: 1.2050515 Test Loss: 0.4858083
+[INFO] 2025-12-11 16:11:17,674 Validation loss decreased (1.213443 --> 1.205052).  Saving model ...
+[INFO] 2025-12-11 16:11:18,137 	iters: 100, epoch: 14 | loss: 0.5510023
+[INFO] 2025-12-11 16:11:18,138 	speed: 0.0298s/iter; left time: 612.4605s
+[INFO] 2025-12-11 16:11:18,507 	iters: 200, epoch: 14 | loss: 0.5009379
+[INFO] 2025-12-11 16:11:18,508 	speed: 0.0037s/iter; left time: 75.4868s
+[INFO] 2025-12-11 16:11:18,660 Epoch: 14 cost time: 0.9815735816955566
+[INFO] 2025-12-11 16:11:20,883 Epoch: 14, Steps: 237 | Train Loss: 0.5164996 Vali Loss: 1.2297949 Test Loss: 0.4759861
+[INFO] 2025-12-11 16:11:20,884 EarlyStopping counter: 1 out of 10
+[INFO] 2025-12-11 16:11:21,356 	iters: 100, epoch: 15 | loss: 0.5329595
+[INFO] 2025-12-11 16:11:21,356 	speed: 0.0285s/iter; left time: 577.7309s
+[INFO] 2025-12-11 16:11:21,753 	iters: 200, epoch: 15 | loss: 0.5054851
+[INFO] 2025-12-11 16:11:21,753 	speed: 0.0040s/iter; left time: 80.1383s
+[INFO] 2025-12-11 16:11:21,897 Epoch: 15 cost time: 1.0124962329864502
+[INFO] 2025-12-11 16:11:24,427 Epoch: 15, Steps: 237 | Train Loss: 0.5161619 Vali Loss: 1.2521366 Test Loss: 0.4637829
+[INFO] 2025-12-11 16:11:24,427 EarlyStopping counter: 2 out of 10
+[INFO] 2025-12-11 16:11:24,909 	iters: 100, epoch: 16 | loss: 0.5644439
+[INFO] 2025-12-11 16:11:24,909 	speed: 0.0316s/iter; left time: 632.4972s
+[INFO] 2025-12-11 16:11:25,281 	iters: 200, epoch: 16 | loss: 0.5433017
+[INFO] 2025-12-11 16:11:25,281 	speed: 0.0037s/iter; left time: 74.1074s
+[INFO] 2025-12-11 16:11:25,441 Epoch: 16 cost time: 1.013868808746338
+[INFO] 2025-12-11 16:11:29,082 Epoch: 16, Steps: 237 | Train Loss: 0.5162270 Vali Loss: 1.2362876 Test Loss: 0.4686134
+[INFO] 2025-12-11 16:11:29,083 EarlyStopping counter: 3 out of 10
+[INFO] 2025-12-11 16:11:29,519 	iters: 100, epoch: 17 | loss: 0.4601246
+[INFO] 2025-12-11 16:11:29,520 	speed: 0.0424s/iter; left time: 839.7852s
+[INFO] 2025-12-11 16:11:29,906 	iters: 200, epoch: 17 | loss: 0.5720522
+[INFO] 2025-12-11 16:11:29,906 	speed: 0.0039s/iter; left time: 76.0447s
+[INFO] 2025-12-11 16:11:30,061 Epoch: 17 cost time: 0.9777634143829346
+[INFO] 2025-12-11 16:11:32,262 Epoch: 17, Steps: 237 | Train Loss: 0.5160981 Vali Loss: 1.2336040 Test Loss: 0.4715154
+[INFO] 2025-12-11 16:11:32,263 EarlyStopping counter: 4 out of 10
+[INFO] 2025-12-11 16:11:32,623 	iters: 100, epoch: 18 | loss: 0.5289640
+[INFO] 2025-12-11 16:11:32,624 	speed: 0.0272s/iter; left time: 531.9683s
+[INFO] 2025-12-11 16:11:33,001 	iters: 200, epoch: 18 | loss: 0.4656731
+[INFO] 2025-12-11 16:11:33,001 	speed: 0.0038s/iter; left time: 73.3937s
+[INFO] 2025-12-11 16:11:33,162 Epoch: 18 cost time: 0.8992459774017334
+[INFO] 2025-12-11 16:11:35,386 Epoch: 18, Steps: 237 | Train Loss: 0.5157988 Vali Loss: 1.2145073 Test Loss: 0.4805392
+[INFO] 2025-12-11 16:11:35,386 EarlyStopping counter: 5 out of 10
+[INFO] 2025-12-11 16:11:35,814 	iters: 100, epoch: 19 | loss: 0.5202299
+[INFO] 2025-12-11 16:11:35,814 	speed: 0.0281s/iter; left time: 543.8807s
+[INFO] 2025-12-11 16:11:36,190 	iters: 200, epoch: 19 | loss: 0.5892286
+[INFO] 2025-12-11 16:11:36,190 	speed: 0.0038s/iter; left time: 72.3549s
+[INFO] 2025-12-11 16:11:36,344 Epoch: 19 cost time: 0.9580161571502686
+[INFO] 2025-12-11 16:11:38,589 Epoch: 19, Steps: 237 | Train Loss: 0.5156249 Vali Loss: 1.1987711 Test Loss: 0.4893405
+[INFO] 2025-12-11 16:11:38,589 Validation loss decreased (1.205052 --> 1.198771).  Saving model ...
+[INFO] 2025-12-11 16:11:39,074 	iters: 100, epoch: 20 | loss: 0.4536535
+[INFO] 2025-12-11 16:11:39,074 	speed: 0.0288s/iter; left time: 550.8004s
+[INFO] 2025-12-11 16:11:39,468 	iters: 200, epoch: 20 | loss: 0.5679350
+[INFO] 2025-12-11 16:11:39,468 	speed: 0.0039s/iter; left time: 74.6820s
+[INFO] 2025-12-11 16:11:39,625 Epoch: 20 cost time: 1.032616138458252
+[INFO] 2025-12-11 16:11:41,924 Epoch: 20, Steps: 237 | Train Loss: 0.5156088 Vali Loss: 1.2336712 Test Loss: 0.4689730
+[INFO] 2025-12-11 16:11:41,925 EarlyStopping counter: 1 out of 10
+[INFO] 2025-12-11 16:11:42,374 	iters: 100, epoch: 21 | loss: 0.4852616
+[INFO] 2025-12-11 16:11:42,374 	speed: 0.0291s/iter; left time: 547.9692s
+[INFO] 2025-12-11 16:11:42,758 	iters: 200, epoch: 21 | loss: 0.5010763
+[INFO] 2025-12-11 16:11:42,758 	speed: 0.0038s/iter; left time: 71.7628s
+[INFO] 2025-12-11 16:11:42,904 Epoch: 21 cost time: 0.9794816970825195
+[INFO] 2025-12-11 16:11:45,291 Epoch: 21, Steps: 237 | Train Loss: 0.5154227 Vali Loss: 1.2188203 Test Loss: 0.4772614
+[INFO] 2025-12-11 16:11:45,291 EarlyStopping counter: 2 out of 10
+[INFO] 2025-12-11 16:11:45,758 	iters: 100, epoch: 22 | loss: 0.5159955
+[INFO] 2025-12-11 16:11:45,758 	speed: 0.0300s/iter; left time: 558.7162s
+[INFO] 2025-12-11 16:11:46,176 	iters: 200, epoch: 22 | loss: 0.4889583
+[INFO] 2025-12-11 16:11:46,177 	speed: 0.0042s/iter; left time: 77.4155s
+[INFO] 2025-12-11 16:11:46,322 Epoch: 22 cost time: 1.0302660465240479
+[INFO] 2025-12-11 16:11:48,583 Epoch: 22, Steps: 237 | Train Loss: 0.5148284 Vali Loss: 1.2095621 Test Loss: 0.4847924
+[INFO] 2025-12-11 16:11:48,583 EarlyStopping counter: 3 out of 10
+[INFO] 2025-12-11 16:11:48,999 	iters: 100, epoch: 23 | loss: 0.5172612
+[INFO] 2025-12-11 16:11:49,000 	speed: 0.0282s/iter; left time: 519.2061s
+[INFO] 2025-12-11 16:11:49,412 	iters: 200, epoch: 23 | loss: 0.4927810
+[INFO] 2025-12-11 16:11:49,412 	speed: 0.0041s/iter; left time: 75.2782s
+[INFO] 2025-12-11 16:11:49,565 Epoch: 23 cost time: 0.9825441837310791
+[INFO] 2025-12-11 16:11:51,867 Epoch: 23, Steps: 237 | Train Loss: 0.5148710 Vali Loss: 1.2247218 Test Loss: 0.4770219
+[INFO] 2025-12-11 16:11:51,868 EarlyStopping counter: 4 out of 10
+[INFO] 2025-12-11 16:11:52,349 	iters: 100, epoch: 24 | loss: 0.5052244
+[INFO] 2025-12-11 16:11:52,349 	speed: 0.0294s/iter; left time: 533.1276s
+[INFO] 2025-12-11 16:11:52,759 	iters: 200, epoch: 24 | loss: 0.5389656
+[INFO] 2025-12-11 16:11:52,759 	speed: 0.0041s/iter; left time: 73.8369s
+[INFO] 2025-12-11 16:11:52,920 Epoch: 24 cost time: 1.0511364936828613
+[INFO] 2025-12-11 16:11:55,220 Epoch: 24, Steps: 237 | Train Loss: 0.5148342 Vali Loss: 1.2424383 Test Loss: 0.4660916
+[INFO] 2025-12-11 16:11:55,220 EarlyStopping counter: 5 out of 10
+[INFO] 2025-12-11 16:11:55,621 	iters: 100, epoch: 25 | loss: 0.5504553
+[INFO] 2025-12-11 16:11:55,622 	speed: 0.0286s/iter; left time: 512.8501s
+[INFO] 2025-12-11 16:11:56,043 	iters: 200, epoch: 25 | loss: 0.5001697
+[INFO] 2025-12-11 16:11:56,044 	speed: 0.0042s/iter; left time: 75.0463s
+[INFO] 2025-12-11 16:11:56,190 Epoch: 25 cost time: 0.9687416553497314
+[INFO] 2025-12-11 16:11:59,865 Epoch: 25, Steps: 237 | Train Loss: 0.5146674 Vali Loss: 1.2233658 Test Loss: 0.4749680
+[INFO] 2025-12-11 16:11:59,865 EarlyStopping counter: 6 out of 10
+[INFO] 2025-12-11 16:12:00,336 	iters: 100, epoch: 26 | loss: 0.5680802
+[INFO] 2025-12-11 16:12:00,336 	speed: 0.0429s/iter; left time: 758.6244s
+[INFO] 2025-12-11 16:12:00,735 	iters: 200, epoch: 26 | loss: 0.5104871
+[INFO] 2025-12-11 16:12:00,736 	speed: 0.0040s/iter; left time: 70.1368s
+[INFO] 2025-12-11 16:12:00,884 Epoch: 26 cost time: 1.0184648036956787
+[INFO] 2025-12-11 16:12:03,180 Epoch: 26, Steps: 237 | Train Loss: 0.5143616 Vali Loss: 1.2356408 Test Loss: 0.4681943
+[INFO] 2025-12-11 16:12:03,180 EarlyStopping counter: 7 out of 10
+[INFO] 2025-12-11 16:12:03,637 	iters: 100, epoch: 27 | loss: 0.5189082
+[INFO] 2025-12-11 16:12:03,637 	speed: 0.0290s/iter; left time: 505.9624s
+[INFO] 2025-12-11 16:12:04,032 	iters: 200, epoch: 27 | loss: 0.5186723
+[INFO] 2025-12-11 16:12:04,032 	speed: 0.0039s/iter; left time: 68.4796s
+[INFO] 2025-12-11 16:12:04,190 Epoch: 27 cost time: 1.0096988677978516
+[INFO] 2025-12-11 16:12:06,421 Epoch: 27, Steps: 237 | Train Loss: 0.5147708 Vali Loss: 1.1872270 Test Loss: 0.4965755
+[INFO] 2025-12-11 16:12:06,421 Validation loss decreased (1.198771 --> 1.187227).  Saving model ...
+[INFO] 2025-12-11 16:12:06,878 	iters: 100, epoch: 28 | loss: 0.4785914
+[INFO] 2025-12-11 16:12:06,878 	speed: 0.0285s/iter; left time: 489.5165s
+[INFO] 2025-12-11 16:12:07,259 	iters: 200, epoch: 28 | loss: 0.5261590
+[INFO] 2025-12-11 16:12:07,259 	speed: 0.0038s/iter; left time: 65.2636s
+[INFO] 2025-12-11 16:12:07,403 Epoch: 28 cost time: 0.9786152839660645
+[INFO] 2025-12-11 16:12:09,725 Epoch: 28, Steps: 237 | Train Loss: 0.5145800 Vali Loss: 1.2127581 Test Loss: 0.4800760
+[INFO] 2025-12-11 16:12:09,725 EarlyStopping counter: 1 out of 10
+[INFO] 2025-12-11 16:12:10,203 	iters: 100, epoch: 29 | loss: 0.5056480
+[INFO] 2025-12-11 16:12:10,203 	speed: 0.0294s/iter; left time: 499.4747s
+[INFO] 2025-12-11 16:12:10,629 	iters: 200, epoch: 29 | loss: 0.5230495
+[INFO] 2025-12-11 16:12:10,629 	speed: 0.0042s/iter; left time: 71.6191s
+[INFO] 2025-12-11 16:12:10,790 Epoch: 29 cost time: 1.0638039112091064
+[INFO] 2025-12-11 16:12:13,087 Epoch: 29, Steps: 237 | Train Loss: 0.5144365 Vali Loss: 1.2135817 Test Loss: 0.4803385
+[INFO] 2025-12-11 16:12:13,088 EarlyStopping counter: 2 out of 10
+[INFO] 2025-12-11 16:12:13,494 	iters: 100, epoch: 30 | loss: 0.4860035
+[INFO] 2025-12-11 16:12:13,495 	speed: 0.0287s/iter; left time: 479.4112s
+[INFO] 2025-12-11 16:12:13,847 	iters: 200, epoch: 30 | loss: 0.5697919
+[INFO] 2025-12-11 16:12:13,847 	speed: 0.0035s/iter; left time: 58.4962s
+[INFO] 2025-12-11 16:12:14,004 Epoch: 30 cost time: 0.915686845779419
+[INFO] 2025-12-11 16:12:16,537 Epoch: 30, Steps: 237 | Train Loss: 0.5142815 Vali Loss: 1.2261568 Test Loss: 0.4731285
+[INFO] 2025-12-11 16:12:16,538 EarlyStopping counter: 3 out of 10
+[INFO] 2025-12-11 16:12:16,971 	iters: 100, epoch: 31 | loss: 0.5272602
+[INFO] 2025-12-11 16:12:16,971 	speed: 0.0312s/iter; left time: 515.0351s
+[INFO] 2025-12-11 16:12:17,361 	iters: 200, epoch: 31 | loss: 0.5112445
+[INFO] 2025-12-11 16:12:17,361 	speed: 0.0039s/iter; left time: 63.9213s
+[INFO] 2025-12-11 16:12:17,512 Epoch: 31 cost time: 0.9736621379852295
+[INFO] 2025-12-11 16:12:19,775 Epoch: 31, Steps: 237 | Train Loss: 0.5144747 Vali Loss: 1.2312822 Test Loss: 0.4692322
+[INFO] 2025-12-11 16:12:19,775 EarlyStopping counter: 4 out of 10
+[INFO] 2025-12-11 16:12:20,208 	iters: 100, epoch: 32 | loss: 0.5673479
+[INFO] 2025-12-11 16:12:20,208 	speed: 0.0285s/iter; left time: 462.6678s
+[INFO] 2025-12-11 16:12:20,597 	iters: 200, epoch: 32 | loss: 0.5402528
+[INFO] 2025-12-11 16:12:20,597 	speed: 0.0039s/iter; left time: 62.7840s
+[INFO] 2025-12-11 16:12:20,753 Epoch: 32 cost time: 0.9765098094940186
+[INFO] 2025-12-11 16:12:23,126 Epoch: 32, Steps: 237 | Train Loss: 0.5143040 Vali Loss: 1.2255635 Test Loss: 0.4722567
+[INFO] 2025-12-11 16:12:23,126 EarlyStopping counter: 5 out of 10
+[INFO] 2025-12-11 16:12:23,588 	iters: 100, epoch: 33 | loss: 0.4333732
+[INFO] 2025-12-11 16:12:23,588 	speed: 0.0299s/iter; left time: 479.0625s
+[INFO] 2025-12-11 16:12:23,956 	iters: 200, epoch: 33 | loss: 0.5040693
+[INFO] 2025-12-11 16:12:23,956 	speed: 0.0037s/iter; left time: 58.5479s
+[INFO] 2025-12-11 16:12:24,108 Epoch: 33 cost time: 0.981865644454956
+[INFO] 2025-12-11 16:12:26,393 Epoch: 33, Steps: 237 | Train Loss: 0.5139707 Vali Loss: 1.2179586 Test Loss: 0.4764221
+[INFO] 2025-12-11 16:12:26,393 EarlyStopping counter: 6 out of 10
+[INFO] 2025-12-11 16:12:26,871 	iters: 100, epoch: 34 | loss: 0.4876429
+[INFO] 2025-12-11 16:12:26,871 	speed: 0.0291s/iter; left time: 459.9832s
+[INFO] 2025-12-11 16:12:27,240 	iters: 200, epoch: 34 | loss: 0.5069202
+[INFO] 2025-12-11 16:12:27,241 	speed: 0.0037s/iter; left time: 57.9687s
+[INFO] 2025-12-11 16:12:27,416 Epoch: 34 cost time: 1.0217788219451904
+[INFO] 2025-12-11 16:12:29,719 Epoch: 34, Steps: 237 | Train Loss: 0.5141348 Vali Loss: 1.2309698 Test Loss: 0.4721889
+[INFO] 2025-12-11 16:12:29,719 EarlyStopping counter: 7 out of 10
+[INFO] 2025-12-11 16:12:30,165 	iters: 100, epoch: 35 | loss: 0.5569510
+[INFO] 2025-12-11 16:12:30,165 	speed: 0.0292s/iter; left time: 454.4702s
+[INFO] 2025-12-11 16:12:30,532 	iters: 200, epoch: 35 | loss: 0.5168772
+[INFO] 2025-12-11 16:12:30,532 	speed: 0.0037s/iter; left time: 56.6317s
+[INFO] 2025-12-11 16:12:30,687 Epoch: 35 cost time: 0.9671554565429688
+[INFO] 2025-12-11 16:12:34,364 Epoch: 35, Steps: 237 | Train Loss: 0.5141029 Vali Loss: 1.2449950 Test Loss: 0.4643016
+[INFO] 2025-12-11 16:12:34,364 EarlyStopping counter: 8 out of 10
+[INFO] 2025-12-11 16:12:34,820 	iters: 100, epoch: 36 | loss: 0.4783313
+[INFO] 2025-12-11 16:12:34,821 	speed: 0.0429s/iter; left time: 656.2438s
+[INFO] 2025-12-11 16:12:35,193 	iters: 200, epoch: 36 | loss: 0.5116184
+[INFO] 2025-12-11 16:12:35,194 	speed: 0.0037s/iter; left time: 56.5563s
+[INFO] 2025-12-11 16:12:35,344 Epoch: 36 cost time: 0.9804403781890869
+[INFO] 2025-12-11 16:12:37,622 Epoch: 36, Steps: 237 | Train Loss: 0.5144460 Vali Loss: 1.2113217 Test Loss: 0.4786876
+[INFO] 2025-12-11 16:12:37,623 EarlyStopping counter: 9 out of 10
+[INFO] 2025-12-11 16:12:38,033 	iters: 100, epoch: 37 | loss: 0.4626934
+[INFO] 2025-12-11 16:12:38,033 	speed: 0.0284s/iter; left time: 427.9006s
+[INFO] 2025-12-11 16:12:38,405 	iters: 200, epoch: 37 | loss: 0.4749896
+[INFO] 2025-12-11 16:12:38,405 	speed: 0.0037s/iter; left time: 55.4955s
+[INFO] 2025-12-11 16:12:38,556 Epoch: 37 cost time: 0.933220624923706
+[INFO] 2025-12-11 16:12:40,931 Epoch: 37, Steps: 237 | Train Loss: 0.5136628 Vali Loss: 1.2145162 Test Loss: 0.4776146
+[INFO] 2025-12-11 16:12:40,931 EarlyStopping counter: 10 out of 10
+[INFO] 2025-12-11 16:12:40,932 Early stopping
+[INFO] 2025-12-11 16:12:40,947 >>>>>>>testing : ETTh1_336_720_DLinear_ETTh1_ftM_sl336_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[INFO] 2025-12-11 16:12:40,980 test, 2161
+[INFO] 2025-12-11 16:17:51,843 mse:0.49657514691352844, mae:0.5077723264694214, rse:0.6745970845222473

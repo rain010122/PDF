@@ -1,7 +1,9 @@
 import argparse
 import os
 import sys
-
+from datetime import datetime
+from time import gmtime
+from time import strftime
 import torch
 from exp.exp_main import Exp_Main
 import random
@@ -120,6 +122,7 @@ log_path = f"./logs/LongForecasting/{args.model_id}_{args.model}.log"
 logger_config = LoggerConfig(log_path)
 log = get_logger()
 log.info("=" * 50)
+start_time = datetime.now()
 
 # output
 # sys.stdout = open(args.log, 'w')
@@ -200,3 +203,8 @@ else:
     log.info('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
     exp.test(setting, test=1)
     torch.cuda.empty_cache()
+end_time = datetime.now()
+log.info(f"start_time: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
+log.info(f"end_time: {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
+time_diff = end_time - start_time
+log.info(f"总耗时为：{strftime('%H:%M:%S', gmtime(time_diff.total_seconds()))}")

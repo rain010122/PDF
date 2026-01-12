@@ -35,14 +35,14 @@ do
     --d_ff 128 \
     --dropout 0.3 \
     --period 24\
-    --persevere 96\
     --patch_len 1\
     --stride 1\
     --des Exp \
     --pct_start 0.2 \
-    --train_epochs 100 \
-    --patience 20 \
-    --itr 1 --batch_size 128 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_wo_period_enhance_'$seq_len'_'$pred_len.log
+    --train_epochs 20 \
+    --patience 10 \
+    --itr 1 --batch_size 128 --learning_rate 0.0001 
+    # >logs/LongForecasting/$model_name'_'$model_id_name'_wo_period_enhance_'$seq_len'_'$pred_len.log
 done
 
 for pred_len in 336 720
@@ -65,12 +65,12 @@ do
     --d_ff 128 \
     --dropout 0.3 \
     --period 24\
-    --persevere 0\
     --patch_len 1\
     --stride 1\
     --des Exp \
     --pct_start 0.2 \
-    --train_epochs 100 \
-    --patience 20 \
-    --itr 1 --batch_size 128 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_wo_period_enhance_'$seq_len'_'$pred_len.log
+    --train_epochs 20 \
+    --patience 10 \
+    --itr 1 --batch_size 128 --learning_rate 0.0001 
+    # >logs/LongForecasting/$model_name'_'$model_id_name'_wo_period_enhance_'$seq_len'_'$pred_len.log
 done

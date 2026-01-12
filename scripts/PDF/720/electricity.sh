@@ -36,14 +36,14 @@ do
       --dropout 0.45 \
       --fc_dropout 0.15 \
       --kernel_list 3 5 7 7 \
-      --period 8 12 24 180 720\
-      --patch_len 1 2 3 16 48\
-      --stride 1 2 3 16 48\
+      --period 24 180 720\
+      --patch_len 3 16 48\
+      --stride 3 16 48\
       --des 'Exp'\
-      --train_epochs 100\
+      --train_epochs 30\
       --lradj 'TST'\
       --pct_start 0.2\
       --patience 10\
-      --itr 1 --batch_size 32 --learning_rate 0.0001 
+      --itr 1 --batch_size 32 --learning_rate 0.0003 
     #   >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done
