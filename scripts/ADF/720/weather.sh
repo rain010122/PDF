@@ -5,15 +5,14 @@ fi
 if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
-seq_len=720
-model_name=PDF
 
+model_name=ADF
 root_path_name=./dataset/
 data_path_name=weather.csv
 model_id_name=weather
 data_name=custom
 random_seed=2021
-
+seq_len=720
 for pred_len in 96 192 336
 do
     python -u run_longExp.py \
@@ -39,7 +38,7 @@ do
       --patch_len 16 16 24 \
       --stride 16 16 24 \
       --des 'Exp' \
-      --patience 20 \
+      --patience 5 \
       --train_epochs 100 \
       --itr 1 --batch_size 64 --learning_rate 0.00015 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done
@@ -69,7 +68,7 @@ do
       --patch_len 12 15 24 \
       --stride 12 15 24 \
       --des 'Exp' \
-      --patience 20 \
+      --patience 5 \
       --train_epochs 100 \
       --itr 1 --batch_size 128 --learning_rate 0.00005 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log
 done

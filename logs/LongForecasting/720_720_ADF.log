@@ -1,0 +1,106 @@
+[INFO] 2026-05-16 22:41:19,398 ==================================================
+[INFO] 2026-05-16 22:41:19,414 Args in experiment:
+[INFO] 2026-05-16 22:41:19,414 random_seed: 2021
+[INFO] 2026-05-16 22:41:19,414 is_training: 1
+[INFO] 2026-05-16 22:41:19,414 model_id: 720_720
+[INFO] 2026-05-16 22:41:19,414 model: ADF
+[INFO] 2026-05-16 22:41:19,414 data: custom
+[INFO] 2026-05-16 22:41:19,414 root_path: ./dataset/
+[INFO] 2026-05-16 22:41:19,414 data_path: weather.csv
+[INFO] 2026-05-16 22:41:19,414 features: M
+[INFO] 2026-05-16 22:41:19,414 target: OT
+[INFO] 2026-05-16 22:41:19,414 freq: h
+[INFO] 2026-05-16 22:41:19,414 checkpoints: ./checkpoints/
+[INFO] 2026-05-16 22:41:19,414 seq_len: 720
+[INFO] 2026-05-16 22:41:19,414 label_len: 48
+[INFO] 2026-05-16 22:41:19,414 pred_len: 720
+[INFO] 2026-05-16 22:41:19,414 fc_dropout: 0.2
+[INFO] 2026-05-16 22:41:19,414 head_dropout: 0.0
+[INFO] 2026-05-16 22:41:19,419 add: False
+[INFO] 2026-05-16 22:41:19,419 wo_conv: False
+[INFO] 2026-05-16 22:41:19,419 serial_conv: False
+[INFO] 2026-05-16 22:41:19,419 kernel_list: [3, 11, 15, 23, 27]
+[INFO] 2026-05-16 22:41:19,419 patch_len: [12, 15, 24]
+[INFO] 2026-05-16 22:41:19,419 period: [144, 180, 720]
+[INFO] 2026-05-16 22:41:19,419 stride: [12, 15, 24]
+[INFO] 2026-05-16 22:41:19,419 padding_patch: end
+[INFO] 2026-05-16 22:41:19,420 revin: 1
+[INFO] 2026-05-16 22:41:19,420 affine: 0
+[INFO] 2026-05-16 22:41:19,420 subtract_last: 0
+[INFO] 2026-05-16 22:41:19,420 decomposition: 0
+[INFO] 2026-05-16 22:41:19,420 kernel_size: 25
+[INFO] 2026-05-16 22:41:19,420 individual: 0
+[INFO] 2026-05-16 22:41:19,420 embed_type: 0
+[INFO] 2026-05-16 22:41:19,420 enc_in: 21
+[INFO] 2026-05-16 22:41:19,420 dec_in: 7
+[INFO] 2026-05-16 22:41:19,420 c_out: 7
+[INFO] 2026-05-16 22:41:19,420 d_model: 64
+[INFO] 2026-05-16 22:41:19,420 n_heads: 16
+[INFO] 2026-05-16 22:41:19,420 e_layers: 3
+[INFO] 2026-05-16 22:41:19,420 d_layers: 1
+[INFO] 2026-05-16 22:41:19,420 d_ff: 128
+[INFO] 2026-05-16 22:41:19,420 moving_avg: 25
+[INFO] 2026-05-16 22:41:19,420 factor: 1
+[INFO] 2026-05-16 22:41:19,420 distil: True
+[INFO] 2026-05-16 22:41:19,420 dropout: 0.55
+[INFO] 2026-05-16 22:41:19,420 attn_dropout: 0.05
+[INFO] 2026-05-16 22:41:19,420 embed: timeF
+[INFO] 2026-05-16 22:41:19,420 activation: gelu
+[INFO] 2026-05-16 22:41:19,420 output_attention: False
+[INFO] 2026-05-16 22:41:19,420 do_predict: False
+[INFO] 2026-05-16 22:41:19,420 num_workers: 0
+[INFO] 2026-05-16 22:41:19,420 itr: 1
+[INFO] 2026-05-16 22:41:19,420 train_epochs: 100
+[INFO] 2026-05-16 22:41:19,420 batch_size: 128
+[INFO] 2026-05-16 22:41:19,420 patience: 5
+[INFO] 2026-05-16 22:41:19,420 learning_rate: 5e-05
+[INFO] 2026-05-16 22:41:19,420 des: Exp
+[INFO] 2026-05-16 22:41:19,420 loss: mse
+[INFO] 2026-05-16 22:41:19,420 lradj: type3
+[INFO] 2026-05-16 22:41:19,420 pct_start: 0.3
+[INFO] 2026-05-16 22:41:19,424 use_amp: False
+[INFO] 2026-05-16 22:41:19,424 use_gpu: True
+[INFO] 2026-05-16 22:41:19,424 gpu: 0
+[INFO] 2026-05-16 22:41:19,424 use_multi_gpu: False
+[INFO] 2026-05-16 22:41:19,424 devices: 0,1,2,3,4,5,6,7
+[INFO] 2026-05-16 22:41:19,424 test_flop: False
+[INFO] 2026-05-16 22:41:19,424 log: ./logs/LongForecasting/PatchTST_Electricity_336_96.log
+[INFO] 2026-05-16 22:41:19,424 Use GPU: cuda:0
+[INFO] 2026-05-16 22:41:19,574 >>>>>>>start training : 720_720_ADF_custom_ftM_sl720_ll48_pl720_dm64_nh16_el3_dl1_df128_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] 2026-05-16 22:41:19,613 train, 5561
+[INFO] 2026-05-16 22:41:19,644 val, 281
+[INFO] 2026-05-16 22:41:19,674 test, 1281
+[INFO] 2026-05-16 22:41:29,678 Epoch: 1 cost time: 9.347399234771729
+[INFO] 2026-05-16 22:41:51,082 Epoch: 1, Steps: 43 | Train Loss: 1.2927920 Vali Loss: 1497.2708740 Test Loss: 1.1119370
+[INFO] 2026-05-16 22:41:51,082 Validation loss decreased (inf --> 1497.270874).  Saving model ...
+[INFO] 2026-05-16 22:41:51,134 Updating learning rate to 5e-05
+[INFO] 2026-05-16 22:42:00,544 Epoch: 2 cost time: 9.410263538360596
+[INFO] 2026-05-16 22:42:22,700 Epoch: 2, Steps: 43 | Train Loss: 1.2042213 Vali Loss: 1944.2824707 Test Loss: 0.9357145
+[INFO] 2026-05-16 22:42:22,700 EarlyStopping counter: 1 out of 5
+[INFO] 2026-05-16 22:42:22,700 Updating learning rate to 5e-05
+[INFO] 2026-05-16 22:42:31,941 Epoch: 3 cost time: 9.237595796585083
+[INFO] 2026-05-16 22:42:53,850 Epoch: 3, Steps: 43 | Train Loss: 1.0732622 Vali Loss: 2442.0683594 Test Loss: 0.8081180
+[INFO] 2026-05-16 22:42:53,850 EarlyStopping counter: 2 out of 5
+[INFO] 2026-05-16 22:42:53,850 Updating learning rate to 5e-05
+[INFO] 2026-05-16 22:43:03,126 Epoch: 4 cost time: 9.270230293273926
+[INFO] 2026-05-16 22:43:24,834 Epoch: 4, Steps: 43 | Train Loss: 1.0236878 Vali Loss: 2774.5742188 Test Loss: 0.7921848
+[INFO] 2026-05-16 22:43:24,835 EarlyStopping counter: 3 out of 5
+[INFO] 2026-05-16 22:43:24,835 Updating learning rate to 4.5e-05
+[INFO] 2026-05-16 22:43:34,086 Epoch: 5 cost time: 9.251463174819946
+[INFO] 2026-05-16 22:43:55,983 Epoch: 5, Steps: 43 | Train Loss: 0.9986479 Vali Loss: 2411.8505859 Test Loss: 0.8073259
+[INFO] 2026-05-16 22:43:55,985 EarlyStopping counter: 4 out of 5
+[INFO] 2026-05-16 22:43:55,985 Updating learning rate to 4.05e-05
+[INFO] 2026-05-16 22:44:05,206 Epoch: 6 cost time: 9.221248865127563
+[INFO] 2026-05-16 22:44:27,215 Epoch: 6, Steps: 43 | Train Loss: 0.9805219 Vali Loss: 2261.5874023 Test Loss: 0.8093454
+[INFO] 2026-05-16 22:44:27,215 EarlyStopping counter: 5 out of 5
+[INFO] 2026-05-16 22:44:27,215 Early stopping
+[INFO] 2026-05-16 22:44:27,289 >>>>>>>testing : 720_720_ADF_custom_ftM_sl720_ll48_pl720_dm64_nh16_el3_dl1_df128_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[INFO] 2026-05-16 22:44:27,322 test, 1281
+[INFO] 2026-05-16 22:44:27,324 MoE Weight Saving: Enabled
+[INFO] 2026-05-16 22:47:54,601 mse:1.1119388341903687, mae:0.7441191077232361, rse:0.8504656553268433
+[INFO] 2026-05-16 22:47:55,016 Saved MoE weights: moe_weights_period_0.npy, shape: (1281, 22, 2)
+[INFO] 2026-05-16 22:47:55,019 Saved MoE weights: moe_weights_period_1.npy, shape: (1281, 22, 2)
+[INFO] 2026-05-16 22:47:55,021 Saved MoE weights: moe_weights_period_2.npy, shape: (1281, 22, 2)
+[INFO] 2026-05-16 22:47:55,418 start_time: 2026-05-16 22:41:19
+[INFO] 2026-05-16 22:47:55,418 end_time: 2026-05-16 22:47:55
+[INFO] 2026-05-16 22:47:55,418 ×ÜºÄÊ±Îª£º00:06:36
